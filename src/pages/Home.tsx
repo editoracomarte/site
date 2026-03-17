@@ -1,7 +1,9 @@
+import { BookCatalog } from "../components/BookCatalog";
+
 export function Home() {
   return (
     <main>
-      <h1>Início</h1>
+      <BookCatalog />
     </main>
   );
 }
