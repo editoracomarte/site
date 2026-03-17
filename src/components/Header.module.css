@@ -30,3 +30,27 @@ nav {
   padding: 6px 10px;
   text-decoration: none;
 }
+
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .brand {
+    margin-bottom: 0.25rem;
+  }
+
+  nav {
+    width: 100%;
+    overflow-x: auto;
+    gap: 8px;
+  }
+
+  .link {
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+}
