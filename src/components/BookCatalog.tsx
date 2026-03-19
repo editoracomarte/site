@@ -9,7 +9,7 @@ export function BookCatalog() {
   return (
     <section>
       <div className={styles.grid}>
-        {booksData.map((book) => (
+        {booksData.slice(0, 12).map((book) => (
           <article key={book.isbn} className={styles.card}>
             <div className={styles.cover} aria-label={book.title}>
               <img
