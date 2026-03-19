@@ -12,8 +12,8 @@ header {
 }
 
 .brand {
-  display: inline-flex;
   align-items: center;
+  display: inline-flex;
   text-decoration: none;
 }
 
@@ -24,8 +24,8 @@ header {
 }
 
 nav {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 14px;
 }
 
@@ -37,20 +37,16 @@ nav {
 
 @media (max-width: 640px) {
   header {
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
   }
 
-  .brand {
-    margin-bottom: 0.25rem;
-  }
-
   nav {
-    width: 100%;
-    overflow-x: auto;
     gap: 8px;
+    overflow-x: auto;
+    width: 100%;
   }
 
   .link {
