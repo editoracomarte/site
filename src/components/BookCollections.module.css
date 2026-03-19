@@ -12,8 +12,12 @@ ul {
 
 li {
   background-color: var(--white);
-  border-bottom: 1px solid var(--gray);
+  border-top: 1px solid var(--gray);
   margin: 0;
+
+  &:last-of-type {
+    border-bottom: 1px solid var(--gray);
+  }
 }
 
 h3 {
@@ -26,10 +30,8 @@ h3 {
   display: flex;
   height: 100px;
   padding: 1rem 1.5rem;
-
-  background-color: var(--pink);
   position: relative;
-  transition: clip-path 400ms;
+  transition: clip-path 300ms;
   clip-path: polygon(
     var(--fold-start-x) 0,
     100% 0,
@@ -45,8 +47,8 @@ h3 {
  &:hover {
   --fold-start-y: 40%;
   --fold-start-x: 7%;
-  --fold-anchor-x: 5%;
-  --fold-anchor-y: 48%;
+  --fold-anchor-x: 4%;
+  --fold-anchor-y: 50%;
  }
 
  &::before {
@@ -54,12 +56,35 @@ h3 {
     position: absolute;
     transition: inherit;
     inset: 0;
-    background-color: var(--orange);
     z-index: 2;
     clip-path: polygon(
       var(--fold-start-x) 0,
       0 var(--fold-start-y),
       var(--fold-anchor-x) var(--fold-anchor-y)
     );
+  }
+}
+
+.variant-1 {
+  background-color: var(--pink);
+
+  &::before {
+    background-color: var(--orange);
+  }
+}
+
+.variant-2 {
+  background-color: var(--baby-blue);
+
+  &::before {
+    background-color: var(--royal-blue);
+  }
+}
+
+.variant-3 {
+  background-color: var(--green);
+
+  &::before {
+    background-color: var(--dark-green);
   }
 }
