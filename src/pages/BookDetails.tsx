@@ -14,7 +14,7 @@ export function BookDetails() {
       <main className={styles["not-found"]}>
         <h2>Livro não encontrado</h2>
         <p>Desculpe, não conseguimos encontrar este livro em nosso catálogo.</p>
-        <Link to="/" className={styles.backLink}>
+        <Link to="/" className={styles.backlink}>
           Voltar para início
         </Link>
       </main>

@@ -23,7 +23,7 @@
   }
 }
 
-.backLink {
+.backlink {
   color: var(--dark-gray);
   display: inline-block;
   border: 1px solid var(--gray);
@@ -40,13 +40,15 @@
 .details {
   display: flex;
   flex-direction: column;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
 }
 
 .cover-section {
   background-color: var(--gray);
   display: flex;
   justify-content: center;
-  margin: 24px auto;
+  margin-bottom: 1.5rem;
   padding: 0.75rem 0;
   position: relative;
   width: 100%;
