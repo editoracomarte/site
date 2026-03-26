@@ -15,8 +15,8 @@ export function BookHeader({ title, author, genres }: BookHeaderProps) {
         {author}
       </h3>
       <ul className={styles.tags}>
-        {genres.map((genre) => (
-          <li>
+        {genres.map((genre, index) => (
+          <li key={index}>
             <span className={styles.tag}>{genre}</span>
           </li>
         ))}
