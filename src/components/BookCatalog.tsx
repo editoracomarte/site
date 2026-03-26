@@ -13,7 +13,7 @@ export function BookCatalog() {
         {booksData.slice(0, 12).map((book) => (
           <Link
             key={book.isbn}
-            to={`/book/${book.isbn}`}
+            to={`/catalogo/${book.isbn}`}
             style={{ textDecoration: "none" }}
           >
             <article className={styles.card}>

@@ -5,7 +5,7 @@ import { BookHeader } from "../components/BookHeader";
 import { BookPriceSection } from "../components/BookPrice";
 import { BookTechnicalInfo } from "../components/BookTechnicalInfo";
 
-export function BookDetail() {
+export function BookDetails() {
   const { isbn } = useParams<{ isbn: string }>();
   const book = booksData.find((b) => b.isbn === isbn);
 
@@ -41,7 +41,7 @@ export function BookDetail() {
           />
         </div>
 
-         <BookHeader
+        <BookHeader
           title={book.title}
           author={book.author}
           genre={book.gender}
@@ -54,7 +54,20 @@ export function BookDetail() {
         <section className={styles.synopsisSection}>
           <h2 className={styles.sectionTitle}>Sinopse</h2>
           <p className={styles.synopsis}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet blanditiis obcaecati debitis in maxime libero expedita omnis magnam. Magnam, pariatur, iusto autem maiores distinctio corrupti exercitationem vitae nostrum consequatur, voluptatem illum? Ipsam facere numquam fuga magnam ad minus sunt libero at. Expedita, vitae aut quidem, deserunt animi corporis consequatur minima eveniet alias blanditiis illum inventore dolor molestias, repellat molestiae minus tenetur voluptate quod facilis totam sed excepturi impedit. Odio dolore labore corporis debitis iste temporibus deserunt ad aut iusto nostrum ut, illo corrupti iure quasi enim autem. Eius blanditiis assumenda voluptatum repellendus pariatur temporibus consequuntur itaque ab nemo facilis cumque reiciendis minima, nobis ex modi similique ad necessitatibus optio vero quod distinctio numquam? Nisi, aliquam eligendi! Eaque sed doloribus architecto.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet
+            blanditiis obcaecati debitis in maxime libero expedita omnis magnam.
+            Magnam, pariatur, iusto autem maiores distinctio corrupti
+            exercitationem vitae nostrum consequatur, voluptatem illum? Ipsam
+            facere numquam fuga magnam ad minus sunt libero at. Expedita, vitae
+            aut quidem, deserunt animi corporis consequatur minima eveniet alias
+            blanditiis illum inventore dolor molestias, repellat molestiae minus
+            tenetur voluptate quod facilis totam sed excepturi impedit. Odio
+            dolore labore corporis debitis iste temporibus deserunt ad aut iusto
+            nostrum ut, illo corrupti iure quasi enim autem. Eius blanditiis
+            assumenda voluptatum repellendus pariatur temporibus consequuntur
+            itaque ab nemo facilis cumque reiciendis minima, nobis ex modi
+            similique ad necessitatibus optio vero quod distinctio numquam?
+            Nisi, aliquam eligendi! Eaque sed doloribus architecto.
           </p>
         </section>
 
