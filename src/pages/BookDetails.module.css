@@ -69,12 +69,7 @@
   margin: 0;
 }
 
-.relatedBooksSection {
-  border-top: 1px solid #eee;
-  padding-top: 32px;
-}
-
-.relatedBooksPlaceholder {
+.related-books-placeholder {
   padding: 48px 24px;
   background-color: #f9f9f9;
   border-radius: 8px;

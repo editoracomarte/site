@@ -62,9 +62,9 @@ export function BookDetails() {
           collection={book.collection}
         />
 
-        <section className={styles.relatedBooksSection}>
+        <section>
           <h3>Livros Relacionados</h3>
-          <div className={styles.relatedBooksPlaceholder}>
+          <div className={styles["related-books-placeholder"]}>
             <p>Espaço reservado para livros relacionados</p>
           </div>
         </section>

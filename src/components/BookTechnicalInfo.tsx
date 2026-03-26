@@ -18,36 +18,36 @@ export function BookTechnicalInfo({
   collection,
 }: BookTechnicalInfoProps) {
   return (
-    <section className={styles.technicalSection}>
+    <section className={styles["technical-section"]}>
       <h3>Informações Técnicas</h3>
-      <div className={styles.metadata}>
+      <ul className={styles.metadata}>
         {collection && (
-          <div className={styles.metadata__item}>
-            <span className={styles.metaLabel}>Coleção</span>
-            <span className={styles.metadata__value}>{collection}</span>
-          </div>
+          <li className={styles["metadata-item"]}>
+            <h4 className={styles.label}>Coleção</h4>
+            <p className={styles.value}>{collection}</p>
+          </li>
         )}
-        <div className={styles.metadata__item}>
-          <span className={styles.metaLabel}>ISBN</span>
-          <span className={styles.metadata__value}>{isbn}</span>
-        </div>
-        <div className={styles.metadata__item}>
-          <span className={styles.metaLabel}>Gênero</span>
-          <span className={styles.metadata__value}>{genres.join(", ")}</span>
-        </div>
-        <div className={styles.metadata__item}>
-          <span className={styles.metaLabel}>Páginas</span>
-          <span className={styles.metadata__value}>{pages}</span>
-        </div>
-        <div className={styles.metadata__item}>
-          <span className={styles.metaLabel}>Formato</span>
-          <span className={styles.metadata__value}>{format}</span>
-        </div>
-        <div className={styles.metadata__item}>
-          <span className={styles.metaLabel}>Ano de Publicação</span>
-          <span className={styles.metadata__value}>{publishingYear}</span>
-        </div>
-      </div>
+        <li className={styles["metadata-item"]}>
+          <h4 className={styles.label}>ISBN</h4>
+          <p className={styles.value}>{isbn}</p>
+        </li>
+        <li className={styles["metadata-item"]}>
+          <h4 className={styles.label}>Gênero</h4>
+          <p className={styles.value}>{genres.join(", ")}</p>
+        </li>
+        <li className={styles["metadata-item"]}>
+          <h4 className={styles.label}>Páginas</h4>
+          <p className={styles.value}>{pages}</p>
+        </li>
+        <li className={styles["metadata-item"]}>
+          <h4 className={styles.label}>Formato</h4>
+          <p className={styles.value}>{format}</p>
+        </li>
+        <li className={styles["metadata-item"]}>
+          <h4 className={styles.label}>Ano de Publicação</h4>
+          <p className={styles.value}>{publishingYear}</p>
+        </li>
+      </ul>
     </section>
   );
 }
