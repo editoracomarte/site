@@ -56,6 +56,16 @@
 
   h3 {
     margin: 0;
+    text-transform: uppercase;
+
+    &::before {
+      content: 'Coleção';
+      font-size: 0.9em;
+      font-family: var(--sans);
+      font-weight: 400;
+      margin-right: 0.3em;
+      text-transform: lowercase;
+    }
   }
 }
 
