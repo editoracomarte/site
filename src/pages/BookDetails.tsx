@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import booksData from "../db/books.json";
-import styles from "../components/BookDetail.module.css";
+import styles from "./BookDetails.module.css";
 import { BookHeader } from "../components/BookHeader";
 import { BookPriceSection } from "../components/BookPrice";
 import { BookTechnicalInfo } from "../components/BookTechnicalInfo";
@@ -11,28 +11,19 @@ export function BookDetails() {
 
   if (!book) {
     return (
-      <main className={styles.container}>
-        <div className={styles.notFound}>
-          <h1>Livro não encontrado</h1>
-          <p>Desculpe, não conseguimos encontrar este livro.</p>
-          <Link to="/" className={styles.backLink}>
-            Voltar para início
-          </Link>
-        </div>
+      <main className={`${styles.container} ${styles["not-found"]}`}>
+        <h2>Livro não encontrado</h2>
+        <p>Desculpe, não conseguimos encontrar este livro.</p>
+        <Link to="/" className={styles.backLink}>
+          Voltar para início
+        </Link>
       </main>
     );
   }
 
   return (
     <main className={styles.container}>
-      <Link to="/" className={styles.backLink}>
-        ← Voltar
-      </Link>
-
       <article className={styles.detail}>
-        {/* Header with Title, Author, and Tags */}
-
-        {/* Cover Image */}
         <div className={styles.coverSection}>
           <img
             src={`/covers/${book.cover_url}`}
