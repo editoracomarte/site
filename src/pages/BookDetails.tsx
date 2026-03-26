@@ -3,6 +3,7 @@ import booksData from "../db/books.json";
 import styles from "./BookDetails.module.css";
 import { BookHeader } from "../components/BookHeader";
 import { BookTechnicalInfo } from "../components/BookTechnicalInfo";
+import { CartIcon } from "../components/CartIcon";
 
 export function BookDetails() {
   const { slug } = useParams<{ slug: string }>();
@@ -25,6 +26,12 @@ export function BookDetails() {
       <article className={styles.details}>
         <section className={styles["cover-section"]}>
           <img src={`/covers/${book.cover_url}`} alt={book.title} />
+          <Link className={styles.buy} to="#">
+            <span className={styles.text}>Comprar</span>
+            <span className={styles.icon} aria-hidden="true">
+              <CartIcon />
+            </span>
+          </Link>
         </section>
 
         <BookHeader
