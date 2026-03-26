@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import styles from "./NotFound.module.css";
 
 export function NotFound() {
   return (
-    <main style={{ padding: '0 16px 24px' }}>
-      <h1>404</h1>
-      <p>Page not found.</p>
+    <main className={styles["not-found"]}>
+      <h2>Não encontramos o que você procura :(</h2>
       <p>
-        <Link to="/">Go home</Link>
+        Verifique se o link que você digitou está correto ou tente novamente.{" "}
+        <Link to="/">Voltar para início.</Link>
       </p>
     </main>
-  )
+  );
 }
-
