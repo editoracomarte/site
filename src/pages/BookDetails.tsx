@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import booksData from "../db/books.json";
 import styles from "./BookDetails.module.css";
 import { BookHeader } from "../components/BookHeader";
-import { BookPriceSection } from "../components/BookPrice";
 import { BookTechnicalInfo } from "../components/BookTechnicalInfo";
 
 export function BookDetails() {
@@ -11,9 +10,9 @@ export function BookDetails() {
 
   if (!book) {
     return (
-      <main className={`${styles.container} ${styles["not-found"]}`}>
+      <main className={styles["not-found"]}>
         <h2>Livro não encontrado</h2>
-        <p>Desculpe, não conseguimos encontrar este livro.</p>
+        <p>Desculpe, não conseguimos encontrar este livro em nosso catálogo.</p>
         <Link to="/" className={styles.backLink}>
           Voltar para início
         </Link>
@@ -37,9 +36,6 @@ export function BookDetails() {
           author={book.author}
           genre={book.gender}
         />
-
-        {/* Price Section with Shopping Cart Button */}
-        <BookPriceSection price={book.price} />
 
         {/* Synopsis Section */}
         <section className={styles.synopsisSection}>
