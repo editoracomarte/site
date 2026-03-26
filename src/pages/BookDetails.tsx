@@ -33,8 +33,8 @@ export function BookDetails() {
           genres={book.genres}
         />
 
-        <section className={styles.synopsisSection}>
-          <h2 className={styles.sectionTitle}>Sinopse</h2>
+        <section className={styles["synopsis-section"]}>
+          <h3>Sinopse</h3>
           <p className={styles.synopsis}>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet
             blanditiis obcaecati debitis in maxime libero expedita omnis magnam.
@@ -53,19 +53,17 @@ export function BookDetails() {
           </p>
         </section>
 
-        {/* Technical Information */}
         <BookTechnicalInfo
           isbn={book.isbn}
-          genre={book.gender}
+          genres={book.genres}
           pages={book.page_num}
           format={book.format}
           publishingYear={book.publishing_year}
           collection={book.collection}
         />
 
-        {/* Related Books Section */}
         <section className={styles.relatedBooksSection}>
-          <h2 className={styles.sectionTitle}>Livros Relacionados</h2>
+          <h3>Livros Relacionados</h3>
           <div className={styles.relatedBooksPlaceholder}>
             <p>Espaço reservado para livros relacionados</p>
           </div>

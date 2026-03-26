@@ -14,10 +14,6 @@
   }
 }
 
-h3 {
-  margin: 0;
-}
-
 .collection {
   align-items: center;
   justify-content: flex-end;
@@ -56,6 +52,10 @@ h3 {
       0 var(--fold-start-y),
       var(--fold-anchor-x) var(--fold-anchor-y)
     );
+  }
+
+  h3 {
+    margin: 0;
   }
 }
 

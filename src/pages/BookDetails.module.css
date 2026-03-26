@@ -56,24 +56,14 @@
   }
 }
 
-.sectionTitle {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 16px 0;
-  color: #222;
+.synopsis-section {
+  margin-bottom: 2rem;
 }
 
 .synopsis {
-  font-size: 16px;
+  color: var(--dark-gray);
   line-height: 1.6;
-  color: #555;
   margin: 0;
-}
-
-.synopsisSection {
-  border-top: 1px solid #eee;
-  padding-top: 32px;
-  margin-bottom: 32px;
 }
 
 .relatedBooksSection {

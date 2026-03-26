@@ -2,7 +2,7 @@ import styles from "./BookTechnicalInfo.module.css";
 
 interface BookTechnicalInfoProps {
   isbn: string;
-  genre: string;
+  genres: string[];
   pages: number | null;
   format: string;
   publishingYear: number;
@@ -11,7 +11,7 @@ interface BookTechnicalInfoProps {
 
 export function BookTechnicalInfo({
   isbn,
-  genre,
+  genres,
   pages,
   format,
   publishingYear,
@@ -19,7 +19,7 @@ export function BookTechnicalInfo({
 }: BookTechnicalInfoProps) {
   return (
     <section className={styles.technicalSection}>
-      <h2 className={styles.sectionTitle}>Informações Técnicas</h2>
+      <h3>Informações Técnicas</h3>
       <div className={styles.metadata}>
         {collection && (
           <div className={styles.metadata__item}>
@@ -33,7 +33,7 @@ export function BookTechnicalInfo({
         </div>
         <div className={styles.metadata__item}>
           <span className={styles.metaLabel}>Gênero</span>
-          <span className={styles.metadata__value}>{genre}</span>
+          <span className={styles.metadata__value}>{genres.join(", ")}</span>
         </div>
         <div className={styles.metadata__item}>
           <span className={styles.metaLabel}>Páginas</span>
