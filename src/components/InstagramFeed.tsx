@@ -36,7 +36,7 @@ export function InstagramFeed() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            @editoriacomarte
+            @editoracomarte
           </a>
           .
         </p>
