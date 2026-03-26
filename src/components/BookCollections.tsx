@@ -14,7 +14,7 @@ export function BookCollections() {
     <section className={styles.collections}>
       <ul>
         {collections.map((collection, index) => (
-          <li key={index}>
+          <li key={index} className={styles["collection-item"]}>
             <CollectionStrip
               name={collection}
               className={styles[`variant-${index + 1}`]}

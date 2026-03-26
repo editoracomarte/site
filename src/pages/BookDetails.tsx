@@ -22,22 +22,17 @@ export function BookDetails() {
 
   return (
     <main className={styles.container}>
-      <article className={styles.detail}>
-        <div className={styles.coverSection}>
-          <img
-            src={`/covers/${book.cover_url}`}
-            alt={book.title}
-            className={styles.cover}
-          />
-        </div>
+      <article className={styles.details}>
+        <section className={styles["cover-section"]}>
+          <img src={`/covers/${book.cover_url}`} alt={book.title} />
+        </section>
 
         <BookHeader
           title={book.title}
           author={book.author}
-          genre={book.gender}
+          genres={book.genres}
         />
 
-        {/* Synopsis Section */}
         <section className={styles.synopsisSection}>
           <h2 className={styles.sectionTitle}>Sinopse</h2>
           <p className={styles.synopsis}>

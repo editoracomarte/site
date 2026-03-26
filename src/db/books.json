@@ -7,7 +7,9 @@
     "page_num": 272,
     "format": "13x22",
     "price": 35,
-    "gender": "Comunicação",
+    "genres": [
+      "Comunicação"
+    ],
     "collection": "Memória Militante",
     "publishing_year": 2025,
     "cover_url": "Memoria_Militante_Heleny_Guariba_Destinos_Sequestrados-600x600.png"
@@ -20,7 +22,9 @@
     "page_num": 384,
     "format": "16x23",
     "price": 44,
-    "gender": "Economia e Ciências Sociais",
+    "genres": [
+      "Economia e Ciências Sociais"
+    ],
     "collection": "",
     "publishing_year": 2024,
     "cover_url": "Bioeconomia_Para_Quem_Bases_para_um_Desenvolvimento_Sustentavel_na_Amazonia-600x600.png"
@@ -33,7 +37,9 @@
     "page_num": 280,
     "format": "14x21",
     "price": 28,
-    "gender": "Comunicação",
+    "genres": [
+      "Comunicação"
+    ],
     "collection": "",
     "publishing_year": 2024,
     "cover_url": "Nao_e_So_Sorte-600x600.png"
@@ -46,7 +52,9 @@
     "page_num": 232,
     "format": "14x21",
     "price": 0,
-    "gender": "Comunicação",
+    "genres": [
+      "Comunicação"
+    ],
     "collection": "Universidade e Sociedade",
     "publishing_year": 2024,
     "cover_url": "Universidade_e_Sociedade_Os_Operarios_Pedem_Passagem-600x600.png"
@@ -59,7 +67,9 @@
     "page_num": 384,
     "format": "14x21",
     "price": 0,
-    "gender": "Comunicação",
+    "genres": [
+      "Comunicação"
+    ],
     "collection": "Universidade e Sociedade",
     "publishing_year": 2024,
     "cover_url": "Universidade_e_Sociedade_Paginas_Coloridas-600x600.png"
@@ -72,7 +82,9 @@
     "page_num": null,
     "format": "-",
     "price": 49,
-    "gender": "Infantojuvenil",
+    "genres": [
+      "Infantojuvenil"
+    ],
     "collection": "",
     "publishing_year": 2023,
     "cover_url": "A_Galinha_dos_Ovos_Verdes-600x600.png"
@@ -85,7 +97,9 @@
     "page_num": 384,
     "format": "-",
     "price": 0,
-    "gender": "Comunicação",
+    "genres": [
+      "Comunicação"
+    ],
     "collection": "",
     "publishing_year": 2023,
     "cover_url": "Biblioteca_Vermelha_de_Raimundo_Jinkings-600x600.png"
@@ -98,7 +112,9 @@
     "page_num": 220,
     "format": "13x21.7",
     "price": 60,
-    "gender": "Editoração",
+    "genres": [
+      "Editoração"
+    ],
     "collection": "Memória Tipográfica",
     "publishing_year": 2023,
     "cover_url": "Memoria_Tipografica_Esboco_Tipografico-600x600.png"
@@ -111,7 +127,10 @@
     "page_num": 160,
     "format": "14x21",
     "price": 0,
-    "gender": "Jornalismo, Comunicação",
+    "genres": [
+      "Jornalismo",
+      "Comunicação"
+    ],
     "collection": "",
     "publishing_year": 2023,
     "cover_url": "Eu_Juro-600x600.png"
@@ -124,7 +143,10 @@
     "page_num": 336,
     "format": "14x21",
     "price": 59,
-    "gender": "Economia e Ciências Sociais, Comunicação",
+    "genres": [
+      "Economia e Ciências Sociais",
+      "Comunicação"
+    ],
     "collection": "Universidade e Sociedade",
     "publishing_year": 2023,
     "cover_url": "Universidade_e_Sociedade_Literatura_e_Direitos_Humanos-600x600.png"
@@ -137,7 +159,9 @@
     "page_num": 286,
     "format": "13x21.7",
     "price": 80,
-    "gender": "Editoração",
+    "genres": [
+      "Editoração"
+    ],
     "collection": "Memória Tipográfica",
     "publishing_year": 2023,
     "cover_url": "Memoria_Tipografica_Manual_da_Tipografia_Brasiliense-600x600.png"
@@ -150,7 +174,9 @@
     "page_num": 120,
     "format": "13x21",
     "price": 59,
-    "gender": "Literatura (Prosa, Poesia e Crítica)",
+    "genres": [
+      "Literatura (Prosa, Poesia e Crítica)"
+    ],
     "collection": "",
     "publishing_year": 2023,
     "cover_url": "Primeiros_Contos-600x600.png"
@@ -163,7 +189,10 @@
     "page_num": 160,
     "format": "14x20.2",
     "price": 0,
-    "gender": "Editoração, Literatura (Prosa, Poesia e Crítica)",
+    "genres": [
+      "Editoração",
+      "Literatura (Prosa, Poesia e Crítica)"
+    ],
     "collection": "",
     "publishing_year": 2023,
     "cover_url": "Prosa_e_Poesia_Elementos_para_a_Selecao_de_Originais-600x600.png"
@@ -176,7 +205,9 @@
     "page_num": 328,
     "format": "20x27",
     "price": 0,
-    "gender": "Comunicação",
+    "genres": [
+      "Comunicação"
+    ],
     "collection": "",
     "publishing_year": 2023,
     "cover_url": "Repensar_a_Universidade_III_Saberes_e_Praticas-600x600.png"
@@ -189,7 +220,9 @@
     "page_num": 436,
     "format": "15x21",
     "price": 0,
-    "gender": "Literatura (Prosa, Poesia e Crítica)",
+    "genres": [
+      "Literatura (Prosa, Poesia e Crítica)"
+    ],
     "collection": "Reserva Literária",
     "publishing_year": 2023,
     "cover_url": "Reserva_Literaria_Treva-600x600.png"

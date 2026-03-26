@@ -3,17 +3,24 @@ import styles from "./BookHeader.module.css";
 interface BookHeaderProps {
   title: string;
   author: string;
-  genre: string;
+  genres: string[];
 }
 
-export function BookHeader({ title, author, genre }: BookHeaderProps) {
+export function BookHeader({ title, author, genres }: BookHeaderProps) {
   return (
-    <div className={styles.header}>
-      <h1 className={styles.title}>{title}</h1>
-      <p className={styles.author}>{author}</p>
-      <div className={styles.tags}>
-        <span className={styles.tag}>{genre}</span>
-      </div>
-    </div>
+    <section className={styles.header}>
+      <h2 className={styles.title}>{title}</h2>
+      <h3 className={styles.author}>
+        <span className="sr-only">Autoria:</span>
+        {author}
+      </h3>
+      <ul className={styles.tags}>
+        {genres.map((genre) => (
+          <li>
+            <span className={styles.tag}>{genre}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

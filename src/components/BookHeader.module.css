@@ -1,61 +1,36 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .title {
-  font-size: 32px;
-  line-height: 1.2;
+  font-size: 2rem;
   margin: 0;
-  color: #222;
-  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 }
 
 .author {
-  font-size: 18px;
-  color: #666;
+  color: var(--dark-gray);
   margin: 0;
-  font-weight: 500;
 }
 
 .tags {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 8px;
+  gap: 0.5rem;
 }
 
 .tag {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #000;
-  color: #fff;
-  border-radius: 20px;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
+  background-color: var(--black);
+  border-radius: 25px;
+  color: var(--white);
+  font-size: 0.75rem;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.tag:hover {
-  background-color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 24px;
-  }
-
-  .author {
-    font-size: 16px;
-  }
-
-  .tag {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
+  padding: 0.5rem 1rem;
+  text-transform: lowercase;
 }

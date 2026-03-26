@@ -37,24 +37,23 @@
   }
 }
 
-.detail {
+.details {
   display: flex;
   flex-direction: column;
 }
 
-.coverSection {
+.cover-section {
   display: flex;
   justify-content: center;
-  width: 100%;
   margin: 24px auto;
-  background-color: #999;
-  padding: 20px;
-}
+  background-color: var(--gray);
+  padding: 0.75rem 0;
+  width: 100%;
 
-.cover {
-  width: auto;
-  height: 400px;
-  border-radius: 8px;
+  img {
+    height: 400px;
+    width: auto;
+  }
 }
 
 .sectionTitle {
