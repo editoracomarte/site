@@ -12,8 +12,8 @@ export function BookCatalog() {
       <div className={styles.grid}>
         {booksData.slice(0, 12).map((book) => (
           <Link
-            key={book.isbn}
-            to={`/catalogo/${book.isbn}`}
+            key={book.slug}
+            to={`/catalogo/${book.slug}`}
             style={{ textDecoration: "none" }}
           >
             <article className={styles.card}>

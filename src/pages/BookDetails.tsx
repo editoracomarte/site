@@ -6,8 +6,8 @@ import { BookPriceSection } from "../components/BookPrice";
 import { BookTechnicalInfo } from "../components/BookTechnicalInfo";
 
 export function BookDetails() {
-  const { isbn } = useParams<{ isbn: string }>();
-  const book = booksData.find((b) => b.isbn === isbn);
+  const { slug } = useParams<{ slug: string }>();
+  const book = booksData.find((b) => b.slug === slug);
 
   if (!book) {
     return (

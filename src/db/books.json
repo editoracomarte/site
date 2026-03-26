@@ -1,6 +1,7 @@
 [
   {
     "title": "Heleny Guariba: Destinos Sequestrados",
+    "slug": "heleny-guariba-destinos-sequestrados",
     "author": "José Armando Pereira da Silva",
     "isbn": "978-65-89321-20-0",
     "page_num": 272,
@@ -13,11 +14,12 @@
   },
   {
     "title": "Bioeconomia Para Quem?: Bases para um Desenvolvimento Sustentável na Amazônia",
+    "slug": "bioeconomia-para-quem-bases-para-um-desenvolvimento-sustentavel-na-amazonia",
     "author": "Jacques Marcovitch, Adalberto Luis Val",
     "isbn": "978-65-89321-44-6",
     "page_num": 384,
     "format": "16x23",
-    "price": 44.00,
+    "price": 44,
     "gender": "Economia e Ciências Sociais",
     "collection": "",
     "publishing_year": 2024,
@@ -25,6 +27,7 @@
   },
   {
     "title": "Não é Só Sorte",
+    "slug": "nao-e-so-sorte",
     "author": "Marcelo Cardoso, Luciano Maluly",
     "isbn": "978-65-89321-47-7",
     "page_num": 280,
@@ -37,6 +40,7 @@
   },
   {
     "title": "Os Operários Pedem Passagem: A Geografia do Operário na Cidade de São Paulo (1900-1917)",
+    "slug": "os-operarios-pedem-passagem-a-geografia-do-operario-na-cidade-de-sao-paulo-1900-1917",
     "author": "Amir El Hakim de Paula",
     "isbn": "978-65-89321-46-0",
     "page_num": 232,
@@ -49,6 +53,7 @@
   },
   {
     "title": "Páginas Coloridas: Editoras Independentes pela Diversidade Sexual e de Gênero",
+    "slug": "paginas-coloridas-editoras-independentes-pela-diversidade-sexual-e-de-genero",
     "author": "Alex Francisco",
     "isbn": "978-65-89321-48-4",
     "page_num": 384,
@@ -61,6 +66,7 @@
   },
   {
     "title": "A Galinha dos Ovos Verdes",
+    "slug": "a-galinha-dos-ovos-verdes",
     "author": "Aguinaldo José Gonçalves, Giovanna Romera Rossi",
     "isbn": "-",
     "page_num": null,
@@ -73,6 +79,7 @@
   },
   {
     "title": "Biblioteca Vermelha de Raimundo Jinkings",
+    "slug": "biblioteca-vermelha-de-raimundo-jinkings",
     "author": "Antonio Carlos Pimentel Jr.",
     "isbn": "978-65-89321-19-4",
     "page_num": 384,
@@ -85,6 +92,7 @@
   },
   {
     "title": "Esboço Tipográfico",
+    "slug": "esboco-tipografico",
     "author": "Arthur Arezio",
     "isbn": "978-65-89321-11-8",
     "page_num": 220,
@@ -97,6 +105,7 @@
   },
   {
     "title": "Eu Juro",
+    "slug": "eu-juro",
     "author": "Eugênio Bucci, Ana Paula Cardoso, Felipe Mello",
     "isbn": "978-65-89321-16-3",
     "page_num": 160,
@@ -109,6 +118,7 @@
   },
   {
     "title": "Literatura e Direitos Humanos",
+    "slug": "literatura-e-direitos-humanos",
     "author": "Laura Mascaro",
     "isbn": "978-65-89321-14-9",
     "page_num": 336,
@@ -121,6 +131,7 @@
   },
   {
     "title": "Manual da Tipografia Brasiliense",
+    "slug": "manual-da-tipografia-brasiliense",
     "author": "René Ogier",
     "isbn": "978-65-89321-06-4",
     "page_num": 286,
@@ -133,6 +144,7 @@
   },
   {
     "title": "Primeiros Contos",
+    "slug": "primeiros-contos",
     "author": "Lima Barreto",
     "isbn": "978-65-89321-22-4",
     "page_num": 120,
@@ -145,6 +157,7 @@
   },
   {
     "title": "Prosa & Poesia: Elementos para a Seleção de Originais",
+    "slug": "prosa-poesia-elementos-para-a-selecao-de-originais",
     "author": "Ivan Texeira, Paulo Franchetti, Thiago Mio Salla",
     "isbn": "978-65-89321-07-1",
     "page_num": 160,
@@ -157,6 +170,7 @@
   },
   {
     "title": "Repensar a Universidade III: Saberes e Práticas",
+    "slug": "repensar-a-universidade-iii-saberes-e-praticas",
     "author": "Jacques Marcovitch",
     "isbn": "978-65-89321-41-5",
     "page_num": 328,
@@ -169,6 +183,7 @@
   },
   {
     "title": "Treva",
+    "slug": "treva",
     "author": "Coelho Neto",
     "isbn": "978-65-89321-17-0",
     "page_num": 436,
