@@ -1,4 +1,4 @@
-import booksData from "../db/books.json";
+import booksData from "@/db/books.json";
 import styles from "./BookCollections.module.css";
 
 const collections = [

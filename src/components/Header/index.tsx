@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo-comarte.svg";
+import logo from "@/assets/logo-comarte.svg";
 import styles from "./Header.module.css";
 
 export function Header() {

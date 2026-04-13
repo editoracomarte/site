@@ -1,9 +1,9 @@
 import { useParams, Link } from "react-router-dom";
-import booksData from "../db/books.json";
+import booksData from "@/db/books.json";
 import styles from "./BookDetails.module.css";
-import { BookHeader } from "../components/BookHeader";
-import { BookTechnicalInfo } from "../components/BookTechnicalInfo";
-import { CartIcon } from "../components/CartIcon";
+import { BookHeader } from "@/components/BookHeader";
+import { BookTechnicalInfo } from "@/components/BookTechnicalInfo";
+import { CartIcon } from "@/components/CartIcon";
 
 export function BookDetails() {
   const { slug } = useParams<{ slug: string }>();

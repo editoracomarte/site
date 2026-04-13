@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import booksData from "../db/books.json";
+import booksData from "@/db/books.json";
 import styles from "./BookCatalog.module.css";
 
 export function BookCatalog() {
