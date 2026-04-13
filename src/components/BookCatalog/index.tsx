@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import booksData from "@/db/books.json";
-import styles from "./BookCatalog.module.css";
+import { Link } from 'react-router-dom';
+import booksData from '@/db/books.json';
+import styles from './BookCatalog.module.css';
 
 export function BookCatalog() {
   function getCoverUrl(coverUrl: string) {
@@ -11,11 +11,7 @@ export function BookCatalog() {
     <section>
       <div className={styles.grid}>
         {booksData.slice(0, 12).map((book) => (
-          <Link
-            key={book.slug}
-            to={`/catalogo/${book.slug}`}
-            style={{ textDecoration: "none" }}
-          >
+          <Link key={book.slug} to={`/catalogo/${book.slug}`} style={{ textDecoration: 'none' }}>
             <article className={styles.card}>
               <div className={styles.cover} aria-label={book.title}>
                 <img

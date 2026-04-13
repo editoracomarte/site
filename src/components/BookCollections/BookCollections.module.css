@@ -22,26 +22,20 @@
   padding: 1rem 1.5rem;
   position: relative;
   transition: clip-path 300ms;
-  clip-path: polygon(
-    var(--fold-start-x) 0,
-    100% 0,
-    100% 100%,
-    0 100%,
-    0 var(--fold-start-y)
-  );
+  clip-path: polygon(var(--fold-start-x) 0, 100% 0, 100% 100%, 0 100%, 0 var(--fold-start-y));
   --fold-start-y: 0%;
   --fold-start-x: 0%;
   --fold-anchor-x: 0%;
   --fold-anchor-y: 0%;
 
- &:hover {
-  --fold-start-y: 40%;
-  --fold-start-x: 7%;
-  --fold-anchor-x: 4%;
-  --fold-anchor-y: 50%;
- }
+  &:hover {
+    --fold-start-y: 40%;
+    --fold-start-x: 7%;
+    --fold-anchor-x: 4%;
+    --fold-anchor-y: 50%;
+  }
 
- &::before {
+  &::before {
     content: '';
     position: absolute;
     transition: inherit;

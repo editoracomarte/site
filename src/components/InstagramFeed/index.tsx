@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import styles from "./InstagramFeed.module.css";
+import { useEffect } from 'react';
+import styles from './InstagramFeed.module.css';
 
 const POSTS: string[] = [
-  "https://www.instagram.com/p/DV3TUC-Fcwf/?utm_source=ig_embed&amp;utm_campaign=loading",
-  "https://www.instagram.com/p/DUdEoKWFW4s/?utm_source=ig_embed&amp;utm_campaign=loading",
-  "https://www.instagram.com/p/DULDBzzCQuU/?utm_source=ig_embed&amp;utm_campaign=loading",
+  'https://www.instagram.com/p/DV3TUC-Fcwf/?utm_source=ig_embed&amp;utm_campaign=loading',
+  'https://www.instagram.com/p/DUdEoKWFW4s/?utm_source=ig_embed&amp;utm_campaign=loading',
+  'https://www.instagram.com/p/DULDBzzCQuU/?utm_source=ig_embed&amp;utm_campaign=loading',
 ];
 
 declare global {
@@ -29,8 +29,8 @@ export function InstagramFeed() {
           Siga-nos no <span className={styles.paper}>Instagram</span>!
         </h2>
         <p className={styles.subtitle}>
-          Nosso canal oficial de comunição. Acompanhe novidades, lançamentos,
-          bastidores editoriais e muito mais em{" "}
+          Nosso canal oficial de comunição. Acompanhe novidades, lançamentos, bastidores editoriais
+          e muito mais em{' '}
           <a
             href="https://www.instagram.com/editoracomarte"
             target="_blank"
@@ -50,10 +50,10 @@ export function InstagramFeed() {
             data-instgrm-permalink={url}
             data-instgrm-version="14"
             style={{
-              justifySelf: "center",
-              margin: "0 auto",
-              maxWidth: "500px",
-              width: "100%",
+              justifySelf: 'center',
+              margin: '0 auto',
+              maxWidth: '500px',
+              width: '100%',
             }}
           />
         ))}

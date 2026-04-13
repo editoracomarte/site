@@ -1,9 +1,9 @@
-import { Route, Routes } from "react-router-dom";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
-import { BookDetails } from "./pages/BookDetails";
-import { Home } from "./pages/Home";
-import { NotFound } from "./pages/NotFound";
+import { Route, Routes } from 'react-router-dom';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { BookDetails } from './pages/BookDetails';
+import { Home } from './pages/Home';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (

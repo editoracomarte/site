@@ -1,4 +1,4 @@
-import styles from "./BookHeader.module.css";
+import styles from './BookHeader.module.css';
 
 interface BookHeaderProps {
   title: string;

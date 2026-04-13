@@ -46,10 +46,5 @@
 .paper {
   background-color: var(--pink);
   padding: 0.25rem;
-  clip-path: polygon(
-    2% 10%,
-    100% 0%,
-    99% 100%,
-    0% 90%
-  );
+  clip-path: polygon(2% 10%, 100% 0%, 99% 100%, 0% 90%);
 }

@@ -50,7 +50,7 @@
 }
 
 .overlay {
-  background-color: rgba(0,0,0, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   display: grid;
   inset: 0;
   opacity: 0;
@@ -78,4 +78,3 @@
 .cover:focus-within .overlay {
   opacity: 1;
 }
-
