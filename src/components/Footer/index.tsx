@@ -1,10 +1,10 @@
-import _ from './Footer.module.css';
+import styles from './Footer.module.css';
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer>
+    <footer className={styles.footer}>
       <address>
         Av. Prof. Lúcio Martins Rodrigues, 443 – Prédio 2 – Sala 10
         <br />
