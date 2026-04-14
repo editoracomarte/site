@@ -64,3 +64,13 @@ p {
   white-space: nowrap;
   width: 1px;
 }
+
+.container {
+  padding: 1.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}

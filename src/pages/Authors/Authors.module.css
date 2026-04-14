@@ -1,0 +1,16 @@
+.authors {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.paper {
+  background-color: var(--green);
+  padding: 0.3rem;
+  clip-path: polygon(0% 7%, 98% 15%, 100% 100%, 1% 90%);
+}

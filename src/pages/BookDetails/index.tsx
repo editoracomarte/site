@@ -22,7 +22,7 @@ export function BookDetails() {
   }
 
   return (
-    <main className={styles.container}>
+    <main className="container">
       <article className={styles.details}>
         <section className={styles['cover-section']}>
           <img src={`/covers/${book.cover_url}`} alt={book.title} />

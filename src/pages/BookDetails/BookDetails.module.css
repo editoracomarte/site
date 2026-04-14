@@ -1,13 +1,3 @@
-.container {
-  padding: 1.5rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-}
-
 .not-found {
   padding: 0 1rem;
   margin: 3rem 0 4rem;
