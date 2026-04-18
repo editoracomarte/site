@@ -58,7 +58,7 @@
       font-family: var(--sans);
       font-weight: 400;
       margin-right: 0.3em;
-      text-transform: lowercase;
+      text-transform: uppercase;
     }
   }
 }
