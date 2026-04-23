@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { Catalog } from './pages/Catalog';
 import { Authors } from './pages/Authors';
+import { AboutUs } from './pages/AboutUs';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/catalogo" element={<Catalog />} />
         <Route path="/autores" element={<Authors />} />
         <Route path="/catalogo/:slug" element={<BookDetails />} />
+        <Route path="/quem-somos" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
