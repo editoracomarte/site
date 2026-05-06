@@ -16,12 +16,14 @@
 
 .collection {
   align-items: center;
+  cursor: pointer;
   justify-content: flex-end;
   display: flex;
   height: 100px;
   padding: 1rem 1.5rem;
   position: relative;
   transition: clip-path 300ms;
+
   clip-path: polygon(var(--fold-start-x) 0, 100% 0, 100% 100%, 0 100%, 0 var(--fold-start-y));
   --fold-start-y: 0%;
   --fold-start-x: 0%;
@@ -29,10 +31,19 @@
   --fold-anchor-y: 0%;
 
   &:hover {
-    --fold-start-y: 40%;
-    --fold-start-x: 7%;
-    --fold-anchor-x: 4%;
-    --fold-anchor-y: 50%;
+    --fold-start-y: 30%;
+    --fold-start-x: 10%;
+    --fold-anchor-x: 5%;
+    --fold-anchor-y: 40%;
+  }
+
+  @media (min-width: 768px) {
+    &:hover {
+      --fold-start-y: 40%;
+      --fold-start-x: 7%;
+      --fold-anchor-x: 4%;
+      --fold-anchor-y: 50%;
+    }
   }
 
   &::before {
