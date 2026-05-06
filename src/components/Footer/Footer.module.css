@@ -2,16 +2,39 @@
   border-top: 1px solid var(--gray);
   color: var(--black);
   font-size: 14px;
-  padding: 0.5rem 1.5rem;
   text-align: center;
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+
+  .supporters {
+    display: flex;
+    gap: 1rem;
+
+    img {
+      height: 40px;
+    }
+  }
+
+  .address {
+    text-align: right;
+  }
 
   a {
     color: var(--black);
     font-weight: bold;
   }
 
-  small {
-    display: block;
-    font-size: 14px;
+  .copyright {
+    border-top: 1px solid var(--gray);
+    padding: 0.5rem;
+
+    small {
+      display: block;
+      font-size: 14px;
+    }
   }
 }
