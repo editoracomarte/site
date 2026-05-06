@@ -5,22 +5,46 @@
   text-align: center;
 
   .info {
+    align-items: center;
     display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 0;
+      padding: 1rem 1.5rem;
+    }
   }
 
   .supporters {
+    align-items: center;
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
 
-    img {
-      height: 40px;
+    .cje,
+    .eca {
+      height: 50px;
+    }
+
+    .usp {
+      height: 30px;
+    }
+
+    @media (min-width: 360px) {
+      flex-direction: row;
     }
   }
 
   .address {
-    text-align: right;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      text-align: right;
+    }
   }
 
   a {

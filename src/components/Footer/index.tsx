@@ -1,5 +1,4 @@
 import styles from './Footer.module.css';
-import logo from '@/assets/logo-comarte.svg';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,9 +8,13 @@ export function Footer() {
       <section className={styles.info}>
         <section className={styles.supporters}>
           <span className="sr-only">Com apoio de:</span>
-          <img src={logo} alt="Departamento de Jornalismo e Editoração da ECA-USP" />
-          <img src={logo} alt="Escola de Artes e Comunicação da USP" />
-          <img src={logo} alt="Universidade de São Paulo" />
+          <img
+            src="/cje.svg"
+            className={styles.cje}
+            alt="Departamento de Jornalismo e Editoração da ECA-USP"
+          />
+          <img src="/eca.svg" className={styles.eca} alt="Escola de Artes e Comunicação da USP" />
+          <img src="/usp.svg" className={styles.usp} alt="Universidade de São Paulo" />
         </section>
         <section className={styles.address}>
           <span className="sr-only">Endereço:</span>
