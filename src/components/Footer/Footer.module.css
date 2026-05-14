@@ -27,14 +27,14 @@
 
     .cje,
     .eca {
-      height: 50px;
+      height: 60px;
     }
 
     .usp {
-      height: 30px;
+      height: 40px;
     }
 
-    @media (min-width: 360px) {
+    @media (min-width: 475px) {
       flex-direction: row;
     }
   }

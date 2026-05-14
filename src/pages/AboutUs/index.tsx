@@ -71,7 +71,7 @@ function CreditEntry({ entry }: { entry: CreditEntry }) {
   return (
     <div className={styles.creditEntry}>
       {entry.role && <span className={styles.role}>{entry.role}</span>}
-      <div className={styles.peopleList}>
+      <div className={styles.people}>
         {entry.people.map((person, idx) => (
           <p key={idx} className={styles.person}>
             {typeof person === 'string' ? (
@@ -120,7 +120,7 @@ export function AboutUs() {
       </section>
       <section className={styles.about}>
         <h2>
-          <span className={styles.paper}>Créditos Institucionais</span>
+          <span className={styles['paper-reversed']}>Créditos Institucionais</span>
         </h2>
         {credits.map((section) => (
           <div key={section.title}>
