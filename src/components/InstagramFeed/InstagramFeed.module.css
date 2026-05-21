@@ -46,14 +46,15 @@
 }
 
 .post {
-  justify-self: center;
+  display: flex;
+  justify-content: center;
 }
 
 .post:nth-child(n + 2) {
   display: none;
 
   @media (min-width: 1024px) {
-    display: block;
+    display: flex;
   }
 }
 
