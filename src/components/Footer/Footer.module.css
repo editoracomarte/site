@@ -14,16 +14,16 @@
 
     @media (min-width: 768px) {
       flex-direction: row;
-      gap: 0;
       padding: 1rem 1.5rem;
     }
   }
 
   .supporters {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
+    padding-left: 100px;
 
     .cje,
     .eca {
@@ -35,7 +35,9 @@
     }
 
     @media (min-width: 475px) {
+      align-items: center;
       flex-direction: row;
+      padding-left: 0;
     }
   }
 

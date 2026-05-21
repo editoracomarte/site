@@ -8,13 +8,13 @@ export function Footer() {
       <section className={styles.info}>
         <section className={styles.supporters}>
           <span className="sr-only">Com apoio de:</span>
+          <img src="/usp.svg" className={styles.usp} alt="Universidade de São Paulo" />
+          <img src="/eca.svg" className={styles.eca} alt="Escola de Artes e Comunicação da USP" />
           <img
             src="/cje.svg"
             className={styles.cje}
             alt="Departamento de Jornalismo e Editoração da ECA-USP"
           />
-          <img src="/eca.svg" className={styles.eca} alt="Escola de Artes e Comunicação da USP" />
-          <img src="/usp.svg" className={styles.usp} alt="Universidade de São Paulo" />
         </section>
         <section className={styles.address}>
           <span className="sr-only">Endereço:</span>
