@@ -4,6 +4,7 @@ import styles from './BookDetails.module.css';
 import { BookHeader } from '@/components/BookHeader';
 import { BookTechnicalInfo } from '@/components/BookTechnicalInfo';
 import { CartIcon } from '@/components/CartIcon';
+import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 
 export function BookDetails() {
   const { slug } = useParams<{ slug: string }>();
@@ -11,12 +12,11 @@ export function BookDetails() {
 
   if (!book) {
     return (
-      <main className={styles['not-found']}>
-        <h2>Livro não encontrado</h2>
-        <p>Desculpe, não conseguimos encontrar este livro em nosso catálogo.</p>
-        <Link to="/" className={styles.backlink}>
-          Voltar para início
-        </Link>
+      <main className="container">
+        <DefaultErrorMessage
+          title="Livro não encontrado :("
+          message="Desculpe, não conseguimos encontrar este livro em nosso catálogo."
+        />
       </main>
     );
   }
