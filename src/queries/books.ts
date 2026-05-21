@@ -4,7 +4,7 @@ import { queryKeys } from './queryKeys';
 
 export function useBooksQuery(params?: { page?: number; pageSize?: number }) {
   const page = params?.page ?? 1;
-  const pageSize = params?.pageSize ?? 12;
+  const pageSize = params?.pageSize ?? 24;
 
   return useQuery({
     queryKey: queryKeys.books.list({ page, pageSize }),

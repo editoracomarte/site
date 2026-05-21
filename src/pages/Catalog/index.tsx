@@ -1,12 +1,12 @@
 import { useBooksQuery } from '@/queries/books';
 import styles from './Catalog.module.css';
+import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
+import { Loading } from '@/components/Loading';
+import type { Book } from '@/api/books';
+import { Link } from 'react-router-dom';
 
 export function Catalog() {
   const { data: books, isLoading, isError, error } = useBooksQuery();
-
-  if (isLoading) {
-    return <>Loading</>;
-  }
 
   if (isError) {
     return <>{JSON.stringify(error)}</>;
@@ -18,8 +18,48 @@ export function Catalog() {
         <h1>
           <span className={styles.paper}>Catálogo</span>
         </h1>
-        {books && books.data.map((book) => <>{JSON.stringify(book)}</>)}
+        {isLoading && <Loading />}
+        {isError && (
+          <DefaultErrorMessage
+            title="Erro ao buscar catálogo :("
+            message="Não conseguimos buscar nossos livros no momento. Verifique se o link está correto ou tente novamente mais tarde!"
+          />
+        )}
+        {books && <Books books={books.data} />}
       </section>
     </main>
+  );
+}
+
+interface BooksProps {
+  books: Book[];
+}
+
+function Books({ books }: BooksProps) {
+  return (
+    <ul className={styles['books-list']}>
+      {books.map((book) => (
+        <li className={styles['books-list-item']}>
+          <Book book={book} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+interface BookProps {
+  book: Book;
+}
+
+function Book({ book }: BookProps) {
+  return (
+    <article className={styles.book}>
+      <Link to={`/${book.slug}`} style={{ textDecoration: 'none' }}>
+        <div className={styles['cover-wrapper']}>
+          <img src="/covers/A_Galinha_dos_Ovos_Verdes-600x600.png" className={styles.cover} />
+        </div>
+        <h3 className={styles.title}>{book.title}</h3>
+      </Link>
+    </article>
   );
 }

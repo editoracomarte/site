@@ -30,7 +30,7 @@ function convertApiBook(book: ApiBook): Book {
 
 export async function getBooks(params: GetBooksParams = {}): Promise<BooksListResult> {
   const page = params.page ?? 1;
-  const pageSize = params.pageSize ?? 12;
+  const pageSize = params.pageSize ?? 24;
 
   const qs = new URLSearchParams();
   qs.set('pagination[page]', String(page));
