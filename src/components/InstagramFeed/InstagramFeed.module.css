@@ -33,13 +33,27 @@
   display: none;
 
   @media (min-width: 360px) {
+    align-items: center;
     display: grid;
+    justify-content: center;
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.post {
+  justify-self: center;
+}
+
+.post:nth-child(n + 2) {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
   }
 }
 

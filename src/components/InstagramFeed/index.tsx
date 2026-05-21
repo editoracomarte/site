@@ -44,18 +44,20 @@ export function InstagramFeed() {
 
       <div className={styles.feed} aria-label="Publicações no Instagram">
         {POSTS.map((url, index) => (
-          <blockquote
-            key={index}
-            className="instagram-media"
-            data-instgrm-permalink={url}
-            data-instgrm-version="14"
-            style={{
-              justifySelf: 'center',
-              margin: '0 auto',
-              maxWidth: '500px',
-              width: '100%',
-            }}
-          />
+          <div className={styles.post}>
+            <blockquote
+              key={index}
+              className="instagram-media"
+              data-instgrm-permalink={url}
+              data-instgrm-version="14"
+              style={{
+                justifySelf: 'center',
+                margin: '0 auto',
+                maxWidth: '500px',
+                width: '100%',
+              }}
+            />
+          </div>
         ))}
       </div>
     </section>
