@@ -4,6 +4,7 @@ import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { Loading } from '@/components/Loading';
 import type { Book } from '@/api/books';
 import { Link } from 'react-router-dom';
+import { Pagination } from '@/components/Pagination';
 
 export function Catalog() {
   const { data: books, isLoading, isError, error } = useBooksQuery();
@@ -26,6 +27,7 @@ export function Catalog() {
           />
         )}
         {books && <Books books={books.data} />}
+        {books?.pagination && <Pagination pagination={books.pagination}} />}
       </section>
     </main>
   );
