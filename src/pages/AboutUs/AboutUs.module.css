@@ -38,11 +38,6 @@
     margin-bottom: 0.125rem;
   }
 
-  .creditEntry:last-of-type .people:last-of-type {
-    display: inline-block;
-    margin-left: 1ch;
-  }
-
   .person {
     margin: 0.125rem 0;
     line-height: 1.5;
@@ -50,15 +45,8 @@
 }
 
 .paper {
-  background-color: var(--baby-blue);
-  padding: 0.3rem;
-  clip-path: polygon(100% 7%, 2% 15%, 0% 100%, 99% 90%);
-}
-
-.paper-reversed {
   background-color: var(--royal-blue);
   color: var(--white);
   padding: 0.3rem;
   clip-path: polygon(100% 7%, 2% 15%, 0% 100%, 99% 90%);
 }
-

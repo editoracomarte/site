@@ -120,7 +120,7 @@ export function AboutUs() {
       </section>
       <section className={styles.about}>
         <h2>
-          <span className={styles['paper-reversed']}>Créditos Institucionais</span>
+          <span className={styles.paper}>Créditos Institucionais</span>
         </h2>
         {credits.map((section) => (
           <div key={section.title}>
