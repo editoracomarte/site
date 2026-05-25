@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+
+  ul {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .page {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: underline;
+
+    &.current {
+      cursor: default;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

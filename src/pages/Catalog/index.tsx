@@ -3,15 +3,28 @@ import styles from './Catalog.module.css';
 import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { Loading } from '@/components/Loading';
 import type { Book } from '@/api/books';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@/components/Pagination';
 
 export function Catalog() {
-  const { data: books, isLoading, isError, error } = useBooksQuery();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pagina = searchParams.get('pagina');
+  const tamanho = searchParams.get('tamanho');
 
-  if (isError) {
-    return <>{JSON.stringify(error)}</>;
-  }
+  const {
+    data: books,
+    isLoading,
+    isError,
+  } = useBooksQuery({
+    page: Number(pagina) || 1,
+    pageSize: Number(tamanho) || 24,
+  });
+
+  const handlePageChange = (page: number) => {
+    searchParams.set('pagina', String(page));
+    setSearchParams(searchParams);
+    window?.scrollTo(0, 0);
+  };
 
   return (
     <main className="container">
@@ -19,6 +32,7 @@ export function Catalog() {
         <h1>
           <span className={styles.paper}>Catálogo</span>
         </h1>
+        {books && JSON.stringify(books)}
         {isLoading && <Loading />}
         {isError && (
           <DefaultErrorMessage
@@ -27,7 +41,9 @@ export function Catalog() {
           />
         )}
         {books && <Books books={books.data} />}
-        {books?.pagination && <Pagination pagination={books.pagination}} />}
+        {books?.pagination && (
+          <Pagination pagination={books.pagination} onPageChange={handlePageChange} />
+        )}
       </section>
     </main>
   );

@@ -1,27 +1,29 @@
+import type { StrapiMetaPagination } from '@/api/types';
+import styles from './Pagination.module.css';
+
 type PaginationProps = {
-  page: number;
-  pageCount: number;
+  pagination: StrapiMetaPagination;
   onPageChange: (page: number) => void;
 };
 
-export function Pagination({ page, pageCount, onPageChange }: PaginationProps) {
-  if (pageCount <= 1) return null;
+export function Pagination({ pagination, onPageChange }: PaginationProps) {
+  const { page, pageCount } = pagination;
+
+  if (pageCount <= 1) {
+    return <></>;
+  }
 
   return (
-    <nav aria-label="Pagination">
-      <ul
-        style={{
-          display: 'flex',
-          gap: '0.5rem',
-          listStyle: 'none',
-          padding: 0,
-          margin: 0,
-          alignItems: 'center',
-        }}
-      >
+    <nav aria-label="Paginação" className={styles.pagination}>
+      <ul>
         <li>
-          <button type="button" onClick={() => onPageChange(page - 1)} disabled={page === 1}>
-            Previous
+          <button
+            className={styles.page}
+            disabled={page === 1}
+            onClick={() => onPageChange(page - 1)}
+            type="button"
+          >
+            Anterior
           </button>
         </li>
 
@@ -31,12 +33,12 @@ export function Pagination({ page, pageCount, onPageChange }: PaginationProps) {
           return (
             <li key={pageNumber}>
               <button
-                type="button"
+                aria-current={pageNumber === page ? 'page' : undefined}
+                className={`
+                  ${styles.page} ${pageNumber === page ? styles.current : ''}
+                `}
                 onClick={() => onPageChange(pageNumber)}
-                aria-current={page === pageNumber ? 'page' : undefined}
-                style={{
-                  fontWeight: page === pageNumber ? 'bold' : 'normal',
-                }}
+                type="button"
               >
                 {pageNumber}
               </button>
@@ -46,11 +48,12 @@ export function Pagination({ page, pageCount, onPageChange }: PaginationProps) {
 
         <li>
           <button
-            type="button"
-            onClick={() => onPageChange(page + 1)}
+            className={styles.page}
             disabled={page === pageCount}
+            onClick={() => onPageChange(page + 1)}
+            type="button"
           >
-            Next
+            Próximo
           </button>
         </li>
       </ul>
