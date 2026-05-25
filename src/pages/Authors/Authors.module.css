@@ -9,9 +9,36 @@
   }
 }
 
+.authors-list {
+  column-count: 1;
+  margin-top: 2rem;
+}
+
+.author {
+  display: inline-block;
+  text-decoration-color: var(--black);
+}
+
+.author-name {
+  line-height: 1.5;
+  margin: 0;
+}
+
 .paper {
   background-color: var(--dark-green);
   color: var(--white);
   padding: 0.3rem;
   clip-path: polygon(0% 7%, 98% 15%, 100% 100%, 1% 90%);
+}
+
+@media (min-width: 640px) {
+  .authors-list {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 960px) {
+  .authors-list {
+    column-count: 3;
+  }
 }
