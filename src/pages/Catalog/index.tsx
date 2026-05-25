@@ -32,7 +32,6 @@ export function Catalog() {
         <h1>
           <span className={styles.paper}>Catálogo</span>
         </h1>
-        {books && JSON.stringify(books)}
         {isLoading && <Loading />}
         {isError && (
           <DefaultErrorMessage
@@ -77,6 +76,7 @@ function Book({ book }: BookProps) {
           <img src="/covers/A_Galinha_dos_Ovos_Verdes-600x600.png" className={styles.cover} />
         </div>
         <h3 className={styles.title}>{book.title}</h3>
+        <h4 className={styles.authors}>{book.autoria}</h4>
       </Link>
     </article>
   );

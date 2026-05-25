@@ -42,7 +42,14 @@
 }
 
 .title {
+  margin: 1rem 0 0;
   text-decoration: none;
+}
+
+.authors {
+  color: var(--dark-gray);
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
 }
 
 @media (min-width: 640px) {

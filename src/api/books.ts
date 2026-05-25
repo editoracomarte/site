@@ -1,14 +1,17 @@
 import { apiGet } from '@/api/http';
 import type { StrapiCollectionResponse, StrapiMetaPagination } from '@/api/types';
+import type { ApiAuthor } from './authors';
 
 export type ApiBook = {
   slug: string;
   titulo: string;
+  autoria: ApiAuthor[];
 };
 
 export type Book = {
   slug: string;
   title: string;
+  autoria: string;
 };
 
 export type BooksListResult = {
@@ -25,6 +28,7 @@ function convertApiBook(book: ApiBook): Book {
   return {
     slug: book.slug,
     title: book.titulo,
+    autoria: book.autoria.map((author) => author.nome).join(', '),
   };
 }
 
@@ -37,8 +41,8 @@ export async function getBooks(params: GetBooksParams = {}): Promise<BooksListRe
   qs.set('pagination[pageSize]', String(pageSize));
   qs.set('fields[0]', 'titulo');
   qs.set('fields[1]', 'slug');
+  qs.set('populate', 'autoria');
   // qs.set('sort', 'title:asc');
-  // qs.set('populate', '*');
 
   const res = await apiGet<StrapiCollectionResponse<ApiBook>>(`/obras?${qs.toString()}`);
 
