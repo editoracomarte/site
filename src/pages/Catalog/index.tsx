@@ -56,7 +56,7 @@ function Books({ books }: BooksProps) {
   return (
     <ul className={styles['books-list']}>
       {books.map((book) => (
-        <li className={styles['books-list-item']}>
+        <li className={styles['books-list-item']} key={book.slug}>
           <Book book={book} />
         </li>
       ))}
@@ -71,7 +71,7 @@ interface BookProps {
 function Book({ book }: BookProps) {
   return (
     <article className={styles.book}>
-      <Link to={`/${book.slug}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/catalogo/${book.slug}`} style={{ textDecoration: 'none' }}>
         <div className={styles['cover-wrapper']}>
           <img src="/covers/A_Galinha_dos_Ovos_Verdes-600x600.png" className={styles.cover} />
         </div>
