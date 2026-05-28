@@ -14,7 +14,7 @@ const credits: CreditSection[] = [
   {
     title: 'Universidade de São Paulo',
     entries: [
-      { role: 'reitor', people: ['Aluisio Augusto Cotrim Segura'] },
+      { role: 'reitor', people: ['Aluisio Augusto Cotrim Segurado'] },
       { role: 'vice-reitora', people: ['Liedi Légi Bariani Bernucci'] },
     ],
   },
