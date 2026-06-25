@@ -19,17 +19,22 @@ export function Footer() {
         <section className={styles.address}>
           <span className="sr-only">Endereço:</span>
           <address>
-            Av. Prof. Lúcio Martins Rodrigues, 443 – Prédio 2 – Sala 10
+            Departamento de Jornalismo e Editoração (CJE)
             <br />
-            CEP 05508-020 – Cidade Universitária – São Paulo, SP – Brasil
+            Av. Prof. Lúcio Martins Rodrigues, 443 — Prédio 2 — Sala 10
             <br />
-            <a href="tel:+551130914016" aria-label="Telefone DDD 11 3 0 9 1 4 0 1 6">
-              (11) 3091-4016
-            </a>
+            Cidade Universitária, CEP 05508-020 — São Paulo — SP — Brasil
             <br />
-            <a href="mailto:editoracomarte@usp.br">
-              <span className="sr-only">Email:</span>editoracomarte@usp.br
-            </a>
+            <span>
+              tel.{' '}
+              <a href="tel:+551130914016" aria-label="DDD 11 3 0 9 1 4 0 1 6">
+                (11) 3091-4016
+              </a>
+              <br />
+            </span>
+            <span>
+              e-mail: <a href="mailto:editoracomarte@usp.br">editoracomarte@usp.br</a>
+            </span>
           </address>
         </section>
       </section>
