@@ -74,7 +74,7 @@ function AuthorsList({ authors }: { authors: Author[] }) {
   const letters = Object.keys(groups);
 
   return (
-    <ul className={styles['authors-list']} aria-label="Lista de autores">
+    <section className={styles['authors-list']} aria-label="Lista de autores">
       {letters.map((letter) => (
         <section
           key={letter}
@@ -89,13 +89,13 @@ function AuthorsList({ authors }: { authors: Author[] }) {
             {groups[letter].map((author) => (
               <li key={author.slug}>
                 <Link to={`/autores/${author.slug}`} className={styles.author}>
-                  <h3 className={styles['author-name']}>{author.name}</h3>
+                  {author.name}
                 </Link>
               </li>
             ))}
           </ul>
         </section>
       ))}
-    </ul>
+    </section>
   );
 }

@@ -15,8 +15,12 @@
 }
 
 .author {
-  display: inline-block;
-  text-decoration-color: var(--black);
+  color: var(--black);
+  font-family: var(--heading);
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .letter-group:first-of-type .letter {
@@ -26,11 +30,6 @@
 .letter {
   margin-top: 2rem;
   margin-bottom: 1rem;
-}
-
-.author-name {
-  line-height: 1.5;
-  margin: 0;
 }
 
 .paper {
