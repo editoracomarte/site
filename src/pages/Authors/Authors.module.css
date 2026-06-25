@@ -19,6 +19,15 @@
   text-decoration-color: var(--black);
 }
 
+.letter-group:first-of-type .letter {
+  margin-top: 0;
+}
+
+.letter {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
 .author-name {
   line-height: 1.5;
   margin: 0;
