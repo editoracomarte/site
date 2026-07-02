@@ -2,7 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { useAuthorQuery } from '@/queries/authors';
 import { Loading } from '@/components/Loading';
-
 import styles from './AuthorDetails.module.css';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 

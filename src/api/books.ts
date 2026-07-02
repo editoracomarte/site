@@ -32,6 +32,13 @@ function convertApiBook(book: ApiBook): Book {
   };
 }
 
+export async function getFeaturedBooks(): Promise<BooksListResult> {
+  const res = await apiGet<{ data: { titulo: string; slug: string }[] }>('/obras/featured');
+  return {
+    data: res.data.map((book) => ({ slug: book.slug, title: book.titulo, autoria: '' })),
+  };
+}
+
 export async function getBooks(params: GetBooksParams = {}): Promise<BooksListResult> {
   const page = params.page ?? 1;
   const pageSize = params.pageSize ?? 24;
