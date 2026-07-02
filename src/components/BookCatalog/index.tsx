@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getFeaturedBooks, type Book } from '@/api/books';
+import { useFeaturedBooksQuery } from '@/queries/books';
 import booksData from '@/db/books.json';
+import type { Book } from '@/api/books';
 import styles from './BookCatalog.module.css';
 
 const slugToCover: Record<string, string> = Object.fromEntries(
   booksData.map((b) => [b.slug, b.cover_url]),
 );
 
-const fallbackBooks: Book[] = booksData.slice(0, 12).map((b) => ({
-  slug: b.slug,
-  title: b.title,
-  autoria: b.author,
-}));
+const fallbackBooks: Book[] = [...booksData]
+  .sort((a, b) => b.publishing_year - a.publishing_year)
+  .slice(0, 12)
+  .map((b) => ({ slug: b.slug, title: b.title, autoria: b.author }));
 
 function getCoverUrl(slug: string): string {
   const filename = slugToCover[slug];
@@ -21,21 +20,11 @@ function getCoverUrl(slug: string): string {
 }
 
 export function BookCatalog() {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data, isLoading, isError } = useFeaturedBooksQuery();
 
-  useEffect(() => {
-    getFeaturedBooks()
-      .then((res) => {
-        setBooks(res.data.length > 0 ? res.data : fallbackBooks);
-      })
-      .catch(() => {
-        setBooks(fallbackBooks);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  if (isLoading) return null;
 
-  if (loading) return null;
+  const books = isError || !data?.data.length ? fallbackBooks : data.data;
 
   return (
     <section>

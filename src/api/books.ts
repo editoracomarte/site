@@ -33,9 +33,12 @@ function convertApiBook(book: ApiBook): Book {
 }
 
 export async function getFeaturedBooks(): Promise<BooksListResult> {
-  const res = await apiGet<{ data: { titulo: string; slug: string }[] }>('/obras/featured');
+  const res = await apiGet<{ data: { titulo: string; slug: string; anoDePublicacao: number }[] }>(
+    '/obras/featured',
+  );
+  const sorted = [...res.data].sort((a, b) => b.anoDePublicacao - a.anoDePublicacao);
   return {
-    data: res.data.map((book) => ({ slug: book.slug, title: book.titulo, autoria: '' })),
+    data: sorted.map((book) => ({ slug: book.slug, title: book.titulo, autoria: '' })),
   };
 }
 
