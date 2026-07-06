@@ -1,16 +1,38 @@
 import { useParams, Link } from 'react-router-dom';
-import booksData from '@/db/books.json';
-import styles from './BookDetails.module.css';
+import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
+import { useBookQuery } from '@/queries/books';
+import { Loading } from '@/components/Loading';
+import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { BookHeader } from '@/components/BookHeader';
 import { BookTechnicalInfo } from '@/components/BookTechnicalInfo';
 import { CartIcon } from '@/components/CartIcon';
-import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
+import booksData from '@/db/books.json';
+import styles from './BookDetails.module.css';
+
+const slugToCover: Record<string, string> = Object.fromEntries(
+  booksData.map((b) => [b.slug, b.cover_url]),
+);
+
+function getCoverUrl(slug: string): string {
+  const filename = slugToCover[slug];
+  if (filename) return `/covers/${filename}`;
+  return 'https://placehold.co/600x600';
+}
 
 export function BookDetails() {
   const { slug } = useParams<{ slug: string }>();
-  const book = booksData.find((b) => b.slug === slug);
 
-  if (!book) {
+  const { data, isLoading, isError } = useBookQuery({ slug: slug ?? '' });
+
+  if (isLoading) {
+    return (
+      <main className="container">
+        <Loading />
+      </main>
+    );
+  }
+
+  if (isError || !data?.data) {
     return (
       <main className="container">
         <DefaultErrorMessage
@@ -21,11 +43,13 @@ export function BookDetails() {
     );
   }
 
+  const book = data.data;
+
   return (
     <main className="container">
       <article className={styles.details}>
         <section className={styles['cover-section']}>
-          <img src={`/covers/${book.cover_url}`} alt={book.title} />
+          <img src={getCoverUrl(book.slug)} alt={book.title} />
           <Link className={styles.buy} to="#">
             <span className={styles.text}>Comprar</span>
             <span className={styles.icon} aria-hidden="true">
@@ -34,31 +58,21 @@ export function BookDetails() {
           </Link>
         </section>
 
-        <BookHeader title={book.title} author={book.author} genres={book.genres} />
+        <BookHeader title={book.title} author={book.autoria} genres={book.genres} />
 
-        <section className={styles['synopsis-section']}>
-          <h3>Sinopse</h3>
-          <p className={styles.synopsis}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet blanditiis obcaecati
-            debitis in maxime libero expedita omnis magnam. Magnam, pariatur, iusto autem maiores
-            distinctio corrupti exercitationem vitae nostrum consequatur, voluptatem illum? Ipsam
-            facere numquam fuga magnam ad minus sunt libero at. Expedita, vitae aut quidem, deserunt
-            animi corporis consequatur minima eveniet alias blanditiis illum inventore dolor
-            molestias, repellat molestiae minus tenetur voluptate quod facilis totam sed excepturi
-            impedit. Odio dolore labore corporis debitis iste temporibus deserunt ad aut iusto
-            nostrum ut, illo corrupti iure quasi enim autem. Eius blanditiis assumenda voluptatum
-            repellendus pariatur temporibus consequuntur itaque ab nemo facilis cumque reiciendis
-            minima, nobis ex modi similique ad necessitatibus optio vero quod distinctio numquam?
-            Nisi, aliquam eligendi! Eaque sed doloribus architecto.
-          </p>
-        </section>
+        {book.description.length > 0 && (
+          <section className={styles['synopsis-section']}>
+            <h3>Sinopse</h3>
+            <BlocksRenderer content={book.description as unknown as BlocksContent} />
+          </section>
+        )}
 
         <BookTechnicalInfo
           isbn={book.isbn}
           genres={book.genres}
-          pages={book.page_num}
+          pages={book.pages}
           format={book.format}
-          publishingYear={book.publishing_year}
+          publishingYear={book.publishingYear}
           collection={book.collection}
         />
 

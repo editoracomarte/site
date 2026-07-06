@@ -1,6 +1,14 @@
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
-import { getBooks, getFeaturedBooks } from '@/api/books';
+import { getBook, getBooks, getFeaturedBooks } from '@/api/books';
 import { queryKeys } from './queryKeys';
+
+export function useBookQuery(params: { slug: string }) {
+  return useQuery({
+    queryKey: queryKeys.books.get(params),
+    queryFn: () => getBook(params.slug),
+    staleTime: 60_000,
+  });
+}
 
 export function useFeaturedBooksQuery() {
   return useQuery({

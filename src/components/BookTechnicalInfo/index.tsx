@@ -21,31 +21,29 @@ export function BookTechnicalInfo({
     <section className={styles['technical-section']}>
       <h3>Informações Técnicas</h3>
       <ul className={styles.metadata}>
-        {collection && (
-          <li className={styles['metadata-item']}>
-            <h4 className={styles.label}>Coleção</h4>
-            <p className={styles.value}>{collection}</p>
-          </li>
-        )}
+        <li className={styles['metadata-item']}>
+          <h4 className={styles.label}>Coleção</h4>
+          <p className={styles.value}>{collection || '-'}</p>
+        </li>
         <li className={styles['metadata-item']}>
           <h4 className={styles.label}>ISBN</h4>
-          <p className={styles.value}>{isbn}</p>
+          <p className={styles.value}>{isbn || '-'}</p>
         </li>
         <li className={styles['metadata-item']}>
           <h4 className={styles.label}>Gênero</h4>
-          <p className={styles.value}>{genres.join(', ')}</p>
+          <p className={styles.value}>{genres.length > 0 ? genres.join(', ') : '-'}</p>
         </li>
         <li className={styles['metadata-item']}>
           <h4 className={styles.label}>Páginas</h4>
-          <p className={styles.value}>{pages}</p>
+          <p className={styles.value}>{pages ?? '-'}</p>
         </li>
         <li className={styles['metadata-item']}>
           <h4 className={styles.label}>Formato</h4>
-          <p className={styles.value}>{format}</p>
+          <p className={styles.value}>{format || '-'}</p>
         </li>
         <li className={styles['metadata-item']}>
           <h4 className={styles.label}>Ano de Publicação</h4>
-          <p className={styles.value}>{publishingYear}</p>
+          <p className={styles.value}>{publishingYear ?? '-'}</p>
         </li>
       </ul>
     </section>

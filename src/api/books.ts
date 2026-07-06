@@ -8,6 +8,38 @@ export type ApiBook = {
   autoria: ApiAuthor[];
 };
 
+export type ApiBookDetail = {
+  slug: string;
+  titulo: string;
+  descricao: Record<string, unknown>[];
+  isbn: string;
+  issn: string;
+  formato: string;
+  numeroDePaginas: number | null;
+  anoDePublicacao: number;
+  autoria: { nome: string }[];
+  colecao: { nome: string }[];
+  generos: { nome: string }[];
+};
+
+export type BookDetail = {
+  slug: string;
+  title: string;
+  description: Record<string, unknown>[];
+  isbn: string;
+  issn: string;
+  format: string;
+  pages: number | null;
+  publishingYear: number;
+  autoria: string;
+  collection: string;
+  genres: string[];
+};
+
+export type BookDetailResult = {
+  data: BookDetail;
+};
+
 export type Book = {
   slug: string;
   title: string;
@@ -29,6 +61,41 @@ function convertApiBook(book: ApiBook): Book {
     slug: book.slug,
     title: book.titulo,
     autoria: book.autoria.map((author) => author.nome).join(', '),
+  };
+}
+
+export async function getBook(slug: string): Promise<BookDetailResult> {
+  const qs = new URLSearchParams();
+  qs.set('filters[slug][$eq]', slug);
+  qs.set('fields[0]', 'titulo');
+  qs.set('fields[1]', 'slug');
+  qs.set('fields[2]', 'isbn');
+  qs.set('fields[3]', 'issn');
+  qs.set('fields[4]', 'formato');
+  qs.set('fields[5]', 'numeroDePaginas');
+  qs.set('fields[6]', 'anoDePublicacao');
+  qs.set('fields[7]', 'descricao');
+  qs.set('populate[autoria][fields][0]', 'nome');
+  qs.set('populate[colecao][fields][0]', 'nome');
+  qs.set('populate[generos][fields][0]', 'nome');
+
+  const res = await apiGet<StrapiCollectionResponse<ApiBookDetail>>(`/obras?${qs.toString()}`);
+  const raw = res.data[0];
+
+  return {
+    data: {
+      slug: raw.slug,
+      title: raw.titulo,
+      description: raw.descricao ?? [],
+      isbn: raw.isbn ?? '',
+      issn: raw.issn ?? '',
+      format: raw.formato ?? '',
+      pages: raw.numeroDePaginas ?? null,
+      publishingYear: raw.anoDePublicacao,
+      autoria: raw.autoria.map((a) => a.nome).join(', '),
+      collection: raw.colecao?.[0]?.nome ?? '',
+      genres: raw.generos.map((g) => g.nome),
+    },
   };
 }
 
