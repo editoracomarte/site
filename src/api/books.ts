@@ -103,9 +103,8 @@ export async function getFeaturedBooks(): Promise<BooksListResult> {
   const res = await apiGet<{ data: { titulo: string; slug: string; anoDePublicacao: number }[] }>(
     '/obras/featured',
   );
-  const sorted = [...res.data].sort((a, b) => b.anoDePublicacao - a.anoDePublicacao);
   return {
-    data: sorted.map((book) => ({ slug: book.slug, title: book.titulo, autoria: '' })),
+    data: [...res.data].map((book) => ({ slug: book.slug, title: book.titulo, autoria: '' })),
   };
 }
 

@@ -9,7 +9,6 @@ const slugToCover: Record<string, string> = Object.fromEntries(
 );
 
 const fallbackBooks: Book[] = [...booksData]
-  .sort((a, b) => b.publishing_year - a.publishing_year)
   .slice(0, 12)
   .map((b) => ({ slug: b.slug, title: b.title, autoria: b.author }));
 
