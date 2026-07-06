@@ -32,7 +32,7 @@ export function BookDetails() {
     );
   }
 
-  if (isError || !data?.data) {
+  if (isError || !data) {
     return (
       <main className="container">
         <DefaultErrorMessage
@@ -43,7 +43,7 @@ export function BookDetails() {
     );
   }
 
-  const book = data.data;
+  const book = data;
 
   return (
     <main className="container">

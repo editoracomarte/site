@@ -1,25 +1,24 @@
 import { apiGet } from '@/api/http';
 import type { StrapiCollectionResponse, StrapiMetaPagination } from '@/api/types';
-import type { ApiAuthor } from './authors';
 
-export type ApiBook = {
+type ApiBook = {
   slug: string;
   titulo: string;
-  autoria: ApiAuthor[];
+  anoDePublicacao?: number;
+  descricao?: Record<string, unknown>[];
+  isbn?: string;
+  issn?: string;
+  formato?: string;
+  numeroDePaginas?: number | null;
+  autoria?: { nome: string }[];
+  colecao?: { nome: string }[];
+  generos?: { nome: string }[];
 };
 
-export type ApiBookDetail = {
+export type Book = {
   slug: string;
-  titulo: string;
-  descricao: Record<string, unknown>[];
-  isbn: string;
-  issn: string;
-  formato: string;
-  numeroDePaginas: number | null;
-  anoDePublicacao: number;
-  autoria: { nome: string }[];
-  colecao: { nome: string }[];
-  generos: { nome: string }[];
+  title: string;
+  autoria: string;
 };
 
 export type BookDetail = {
@@ -36,35 +35,12 @@ export type BookDetail = {
   genres: string[];
 };
 
-export type BookDetailResult = {
-  data: BookDetail;
-};
-
-export type Book = {
-  slug: string;
-  title: string;
-  autoria: string;
-};
-
 export type BooksListResult = {
   data: Book[];
   pagination?: StrapiMetaPagination;
 };
 
-export type GetBooksParams = {
-  page?: number;
-  pageSize?: number;
-};
-
-function convertApiBook(book: ApiBook): Book {
-  return {
-    slug: book.slug,
-    title: book.titulo,
-    autoria: book.autoria.map((author) => author.nome).join(', '),
-  };
-}
-
-export async function getBook(slug: string): Promise<BookDetailResult> {
+export async function getBook(slug: string): Promise<BookDetail> {
   const qs = new URLSearchParams();
   qs.set('filters[slug][$eq]', slug);
   qs.set('fields[0]', 'titulo');
@@ -79,36 +55,34 @@ export async function getBook(slug: string): Promise<BookDetailResult> {
   qs.set('populate[colecao][fields][0]', 'nome');
   qs.set('populate[generos][fields][0]', 'nome');
 
-  const res = await apiGet<StrapiCollectionResponse<ApiBookDetail>>(`/obras?${qs.toString()}`);
+  const res = await apiGet<StrapiCollectionResponse<ApiBook>>(`/obras?${qs.toString()}`);
   const raw = res.data[0];
 
   return {
-    data: {
-      slug: raw.slug,
-      title: raw.titulo,
-      description: raw.descricao ?? [],
-      isbn: raw.isbn ?? '',
-      issn: raw.issn ?? '',
-      format: raw.formato ?? '',
-      pages: raw.numeroDePaginas ?? null,
-      publishingYear: raw.anoDePublicacao,
-      autoria: raw.autoria.map((a) => a.nome).join(', '),
-      collection: raw.colecao?.[0]?.nome ?? '',
-      genres: raw.generos.map((g) => g.nome),
-    },
+    slug: raw.slug,
+    title: raw.titulo,
+    description: raw.descricao ?? [],
+    isbn: raw.isbn ?? '',
+    issn: raw.issn ?? '',
+    format: raw.formato ?? '',
+    pages: raw.numeroDePaginas ?? null,
+    publishingYear: raw.anoDePublicacao ?? 0,
+    autoria: raw.autoria?.map((a) => a.nome).join(', ') ?? '',
+    collection: raw.colecao?.[0]?.nome ?? '',
+    genres: raw.generos?.map((g) => g.nome) ?? [],
   };
 }
 
 export async function getFeaturedBooks(): Promise<BooksListResult> {
-  const res = await apiGet<{ data: { titulo: string; slug: string; anoDePublicacao: number }[] }>(
-    '/obras/featured',
-  );
+  const res = await apiGet<{ data: ApiBook[] }>('/obras/featured');
   return {
     data: [...res.data].map((book) => ({ slug: book.slug, title: book.titulo, autoria: '' })),
   };
 }
 
-export async function getBooks(params: GetBooksParams = {}): Promise<BooksListResult> {
+export async function getBooks(
+  params: { page?: number; pageSize?: number } = {},
+): Promise<BooksListResult> {
   const page = params.page ?? 1;
   const pageSize = params.pageSize ?? 24;
 
@@ -118,12 +92,15 @@ export async function getBooks(params: GetBooksParams = {}): Promise<BooksListRe
   qs.set('fields[0]', 'titulo');
   qs.set('fields[1]', 'slug');
   qs.set('populate', 'autoria');
-  // qs.set('sort', 'title:asc');
 
   const res = await apiGet<StrapiCollectionResponse<ApiBook>>(`/obras?${qs.toString()}`);
 
   return {
-    data: res.data.map(convertApiBook),
+    data: res.data.map((book) => ({
+      slug: book.slug,
+      title: book.titulo,
+      autoria: book.autoria?.map((a) => a.nome).join(', ') ?? '',
+    })),
     pagination: res.meta?.pagination,
   };
 }
