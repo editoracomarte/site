@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.author {
+  color: var(--dark-gray);
+  margin: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: var(--black);
+  border-radius: 25px;
+  color: var(--white);
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1rem;
+  text-transform: lowercase;
+}

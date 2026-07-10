@@ -1,0 +1,52 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    margin-top: 2rem;
+    text-align: justify;
+    line-height: 1.6;
+    letter-spacing: 0.1px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 2.5rem;
+    margin-bottom: 0.625rem;
+    text-transform: uppercase;
+  }
+
+  .creditEntry {
+    margin-bottom: 0.75rem;
+  }
+
+  .role {
+    font-family: sans-serif;
+    font-style: italic;
+    display: inline-block;
+    margin-bottom: 0.125rem;
+  }
+
+  .person {
+    margin: 0.125rem 0;
+    line-height: 1.5;
+  }
+}
+
+.paper {
+  background-color: var(--royal-blue);
+  color: var(--white);
+  padding: 0.3rem;
+  clip-path: polygon(100% 7%, 2% 15%, 0% 100%, 99% 90%);
+}

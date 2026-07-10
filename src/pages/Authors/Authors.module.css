@@ -1,0 +1,52 @@
+.authors {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.authors-list {
+  column-count: 1;
+  margin-top: 2rem;
+}
+
+.author {
+  color: var(--black);
+  font-family: var(--heading);
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.letter-group:first-of-type .letter {
+  margin-top: 0;
+}
+
+.letter {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.paper {
+  background-color: var(--dark-green);
+  color: var(--white);
+  padding: 0.3rem;
+  clip-path: polygon(0% 7%, 98% 15%, 100% 100%, 1% 90%);
+}
+
+@media (min-width: 640px) {
+  .authors-list {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 960px) {
+  .authors-list {
+    column-count: 3;
+  }
+}

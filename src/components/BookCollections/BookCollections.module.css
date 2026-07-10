@@ -1,0 +1,99 @@
+.collections {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.collection-item {
+  background-color: var(--white);
+  border-top: 1px solid var(--gray);
+  margin: 0;
+
+  &:last-of-type {
+    border-bottom: 1px solid var(--gray);
+  }
+}
+
+.collection {
+  align-items: center;
+  cursor: pointer;
+  justify-content: flex-end;
+  display: flex;
+  height: 100px;
+  padding: 1rem 1.5rem;
+  position: relative;
+  transition: clip-path 300ms;
+
+  clip-path: polygon(var(--fold-start-x) 0, 100% 0, 100% 100%, 0 100%, 0 var(--fold-start-y));
+  --fold-start-y: 0%;
+  --fold-start-x: 0%;
+  --fold-anchor-x: 0%;
+  --fold-anchor-y: 0%;
+
+  &:hover {
+    --fold-start-y: 30%;
+    --fold-start-x: 10%;
+    --fold-anchor-x: 5%;
+    --fold-anchor-y: 40%;
+  }
+
+  @media (min-width: 768px) {
+    &:hover {
+      --fold-start-y: 40%;
+      --fold-start-x: 7%;
+      --fold-anchor-x: 4%;
+      --fold-anchor-y: 50%;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    transition: inherit;
+    inset: 0;
+    z-index: 2;
+    clip-path: polygon(
+      var(--fold-start-x) 0,
+      0 var(--fold-start-y),
+      var(--fold-anchor-x) var(--fold-anchor-y)
+    );
+  }
+
+  h3 {
+    margin: 0;
+    text-transform: uppercase;
+
+    &::before {
+      content: 'Coleção';
+      font-size: 0.9em;
+      font-family: var(--sans);
+      font-weight: 400;
+      margin-right: 0.3em;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.variant-1 {
+  background-color: var(--pink);
+
+  &::before {
+    background-color: var(--orange);
+  }
+}
+
+.variant-2 {
+  background-color: var(--baby-blue);
+
+  &::before {
+    background-color: var(--royal-blue);
+  }
+}
+
+.variant-3 {
+  background-color: var(--green);
+
+  &::before {
+    background-color: var(--dark-green);
+  }
+}

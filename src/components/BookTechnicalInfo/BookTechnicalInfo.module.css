@@ -1,0 +1,33 @@
+.technical-section {
+  margin-bottom: 2rem;
+}
+
+.metadata {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.metadata-item {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    font-size: 0.75rem;
+    color: var(--black);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+    margin-top: 0;
+    text-transform: uppercase;
+  }
+
+  .value {
+    color: var(--dark-gray);
+    font-size: 1rem;
+  }
+}

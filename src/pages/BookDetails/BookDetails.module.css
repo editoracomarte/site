@@ -1,0 +1,105 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+}
+
+.cover-section {
+  background-color: var(--gray);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 0;
+  position: relative;
+  width: 100%;
+
+  img {
+    aspect-ratio: 1 / 1;
+    height: auto;
+    max-height: 450px;
+    max-width: 450px;
+    width: 100%;
+  }
+}
+
+.buy {
+  bottom: -32px;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  position: absolute;
+  right: 0;
+
+  align-items: center;
+  background-color: var(--magenta);
+  border-radius: 9999px;
+  color: var(--white);
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  padding: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease;
+  width: 32px;
+
+  &:hover {
+    background-color: var(--white);
+    color: var(--magenta);
+  }
+
+  .icon {
+    display: inline-flex;
+  }
+
+  .text {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    border-radius: 5px;
+    bottom: 0;
+    font-family: var(--heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    height: auto;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    padding: 0.75rem 1.25rem;
+    text-transform: uppercase;
+    width: fit-content;
+
+    .icon {
+      display: none;
+    }
+
+    .text {
+      display: block;
+    }
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+.synopsis-section {
+  margin-bottom: 2rem;
+  p {
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+    text-align: justify;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.related-books-placeholder {
+  padding: 48px 24px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+  color: #999;
+}
