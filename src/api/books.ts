@@ -1,11 +1,12 @@
 import { apiGet } from '@/api/http';
 import type { StrapiCollectionResponse, StrapiMetaPagination } from '@/api/types';
+import type { BlocksContent } from '@strapi/blocks-react-renderer';
 
 type ApiBook = {
   slug: string;
   titulo: string;
   anoDePublicacao?: number;
-  descricao?: Record<string, unknown>[];
+  descricao?: BlocksContent;
   isbn?: string;
   issn?: string;
   formato?: string;
@@ -24,7 +25,7 @@ export type Book = {
 export type BookDetail = {
   slug: string;
   title: string;
-  description: Record<string, unknown>[];
+  description: BlocksContent;
   isbn: string;
   issn: string;
   format: string;
