@@ -22,6 +22,9 @@ export function Header() {
         <NavLink to="/quem-somos" className={styles.link}>
           quem somos
         </NavLink>
+        <NavLink to="/publique" className={styles.link}>
+          publique
+        </NavLink>
         <NavLink to="/contato" className={styles.link}>
           contato
         </NavLink>
