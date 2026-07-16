@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+# Com Arte — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web do projeto Com Arte, construída com [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/) e [Vite](https://vite.dev/).
 
-Currently, two official plugins are available:
+## Pré-requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 20+
 
-## React Compiler
+## Configuração
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Crie um arquivo `.env` na raiz do projeto:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+cp .env.example .env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Variável         | Descrição                                                              | Exemplo                        |
+| ---------------- | ---------------------------------------------------------------------- | ------------------------------ |
+| `VITE_API_URL`   | URL base da API do backend                                             | `http://localhost:1337/api`    |
+| `VITE_API_TOKEN` | Token de API gerado no painel admin do Strapi (read-only já basta)     | `7dd...`                  |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+Para acessar token e copiar: acesse `http://localhost:1337/admin` → **Settings** → **API Tokens** → **Read only** → **View Token**.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## Rodando
+
+```bash
+npm install
+npm run dev
+```
+
+A aplicação estará disponível em `http://localhost:5173`.
+
+## Comandos
+
+| Comando                | O que faz                                      |
+| ---------------------- | ---------------------------------------------- |
+| `npm run dev`          | Inicia o servidor de desenvolvimento           |
+| `npm run build`        | Compila para produção (TypeScript + Vite)      |
+| `npm run preview`      | Serve o build de produção localmente           |
+| `npm run lint`         | Verifica erros de lint (ESLint)                |
+| `npm run lint:fix`     | Corrige automaticamente erros de lint          |
+| `npm run format`       | Verifica formatação (Prettier)                 |
+| `npm run format:fix`   | Formata o código                               |
+| `npm test`             | Roda a suíte de testes (Vitest)                |
+| `npm run test:ui`      | Abre a interface visual do Vitest              |
+| `npm run test:coverage`| Gera relatório de cobertura                    |
+
+## Integração com o backend
+
+Todas as chamadas à API passam por `src/api/http.ts`, que injeta automaticamente `VITE_API_URL` e `VITE_API_TOKEN` em cada requisição.
+
+Os dados são buscados e cacheados com [TanStack Query](https://tanstack.com/query). As queries ficam em `src/queries/` e as funções de fetch em `src/api/`.
+
+### Endpoints consumidos
+
+| Endpoint                      | Onde é usado                  |
+| ----------------------------- | ----------------------------- |
+| `GET /obras/featured`         | `BookCatalog` (home)          |
+| `GET /obras?filters[slug]=…`  | `BookDetails`                 |
+| `GET /obras`                  | `Catalog`                     |
+| `GET /colecoes`               | `BookCollections` (home)      |
+| `GET /autores`                | Listagem de autores           |
+| `GET /autores?filters[slug]=…`| `AuthorDetails`               |
+| `GET /instagram`              | `InstagramFeed` (home)        |
+
+
+### Fallbacks
+
+Enquanto o backend não está disponível (erro de rede, permissão não configurada ou dados ausentes), os seguintes componentes exibem dados locais de `src/db/books.json`:
+
+- `BookCatalog` — exibe os 12 primeiros livros do JSON local
+- `BookCollections` — exibe as 3 primeiras coleções extraídas do JSON local
+- `InstagramFeed` — exibe os 3 posts hardcoded no componente
+
+## Estrutura do projeto
+
+```
+src/
+├── api/          # Funções de fetch (http.ts, books.ts, authors.ts, ...)
+├── components/   # Componentes reutilizáveis
+├── db/           # Dados locais de fallback (books.json)
+├── pages/        # Páginas da aplicação (roteadas pelo React Router)
+└── queries/      # Hooks TanStack Query (queryClient.ts, queryKeys.ts, ...)
 ```
