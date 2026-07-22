@@ -1,0 +1,33 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+
+  h1 {
+    text-align: center;
+  }
+
+  p, address {
+    font-style: normal;
+    line-height: 1.75;
+    margin-top: 1.5rem;
+  }
+
+  a {
+    color: var(--black);
+    font-weight: bold;
+  }
+}
+
+.highlight {
+  font-family: var(--heading);
+  text-transform: uppercase;
+}
+
+.paper {
+  background-color: var(--royal-blue);
+  color: var(--white);
+  padding: 0.3rem;
+  clip-path: polygon(98% 10%, 0% 0%, 2% 100%, 98% 98%);
+}
