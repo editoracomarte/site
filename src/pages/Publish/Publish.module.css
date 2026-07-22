@@ -1,0 +1,29 @@
+.publish {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+
+  h1 {
+    color: var(--white);
+    text-align: center;
+  }
+
+  p {
+    margin-top: 2rem;
+    text-align: justify;
+    line-height: 1.6;
+    letter-spacing: 0.1px;
+  }
+
+  a {
+    color: var(--black);
+    font-weight: bold;
+  }
+}
+
+.paper {
+  background-color: var(--magenta);
+  padding: 0.3rem;
+  clip-path: polygon(0% 10%, 100% 0%, 98% 100%, 1% 95%);
+}
