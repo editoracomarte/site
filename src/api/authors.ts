@@ -1,14 +1,15 @@
 import { apiGet } from '@/api/http';
 import type { StrapiCollectionResponse, StrapiMetaPagination } from '@/api/types';
+import type { BlocksContent } from '@strapi/blocks-react-renderer';
 
 export type ApiAuthor = {
-  descricao: Record<string, unknown>;
+  descricao: BlocksContent;
   nome: string;
   slug: string;
 };
 
 export type Author = {
-  description: Record<string, unknown>;
+  description: BlocksContent;
   name: string;
   slug: string;
 };

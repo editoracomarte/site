@@ -1,8 +1,7 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { useAuthorQuery } from '@/queries/authors';
 import { Loading } from '@/components/Loading';
-import styles from './AuthorDetails.module.css';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export function AuthorDetails() {
@@ -31,7 +30,7 @@ export function AuthorDetails() {
             <h2>{author?.data.name}</h2>
           </section>
           <section>
-            <BlocksRenderer content={author?.data.description as any} />
+            <BlocksRenderer content={author?.data.description} />
           </section>
         </>
       )}

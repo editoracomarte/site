@@ -5,7 +5,9 @@ import styles from './BookCollections.module.css';
 
 const fallbackCollections: Collection[] = [
   ...new Set(booksData.filter((b) => b.collection.length > 0).map((b) => b.collection)),
-].slice(0, 3).map((name) => ({ name, slug: '' }));
+]
+  .slice(0, 3)
+  .map((name) => ({ name, slug: '' }));
 
 export function BookCollections() {
   const { data, isError } = useCollectionsQuery();
