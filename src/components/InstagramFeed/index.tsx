@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
+import { useInstagramFeedQuery } from '@/queries/instagram';
 import styles from './InstagramFeed.module.css';
 
-const POSTS: string[] = [
+const FALLBACK_POSTS: string[] = [
   'https://www.instagram.com/p/DV3TUC-Fcwf/?utm_source=ig_embed&amp;utm_campaign=loading',
   'https://www.instagram.com/p/DUdEoKWFW4s/?utm_source=ig_embed&amp;utm_campaign=loading',
   'https://www.instagram.com/p/DULDBzzCQuU/?utm_source=ig_embed&amp;utm_campaign=loading',
@@ -18,9 +19,12 @@ declare global {
 }
 
 export function InstagramFeed() {
+  const { data, isError } = useInstagramFeedQuery();
+  const posts = isError || !data?.length ? FALLBACK_POSTS : data.map((p) => p.url);
+
   useEffect(() => {
     window.instgrm?.Embeds?.process();
-  }, []);
+  }, [posts]);
 
   return (
     <section className={styles.section} aria-labelledby="instagram-heading">
@@ -43,10 +47,9 @@ export function InstagramFeed() {
       </div>
 
       <div className={styles.feed} aria-label="Publicações no Instagram">
-        {POSTS.map((url, index) => (
-          <div className={styles.post}>
+        {posts.map((url) => (
+          <div key={url} className={styles.post}>
             <blockquote
-              key={index}
               className="instagram-media"
               data-instgrm-permalink={url}
               data-instgrm-version="14"

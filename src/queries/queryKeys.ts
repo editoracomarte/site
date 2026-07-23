@@ -1,4 +1,7 @@
 export const queryKeys = {
+  instagram: {
+    feed: () => ['instagram', 'feed'] as const,
+  },
   collections: {
     list: () => ['collections', 'list'] as const,
   },
