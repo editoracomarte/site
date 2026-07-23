@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInstagramFeedQuery } from '@/queries/instagram';
 import styles from './InstagramFeed.module.css';
 
@@ -19,12 +19,27 @@ declare global {
 }
 
 export function InstagramFeed() {
-  const { data, isError } = useInstagramFeedQuery();
+  const { data, isLoading, isError } = useInstagramFeedQuery();
   const posts = isError || !data?.length ? FALLBACK_POSTS : data.map((p) => p.url);
 
+  const [showSkeleton, setShowSkeleton] = useState(true);
+  const [fadingOut, setFadingOut] = useState(false);
+
   useEffect(() => {
-    window.instgrm?.Embeds?.process();
-  }, [posts]);
+    if (isLoading) return;
+    const fadeTimer = setTimeout(() => setFadingOut(true), 700);
+    return () => clearTimeout(fadeTimer);
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (!fadingOut) return;
+    const removeTimer = setTimeout(() => setShowSkeleton(false), 400);
+    return () => clearTimeout(removeTimer);
+  }, [fadingOut]);
+
+  useEffect(() => {
+    if (!showSkeleton) window.instgrm?.Embeds?.process();
+  }, [showSkeleton]);
 
   return (
     <section className={styles.section} aria-labelledby="instagram-heading">
@@ -47,19 +62,23 @@ export function InstagramFeed() {
       </div>
 
       <div className={styles.feed} aria-label="Publicações no Instagram">
-        {posts.map((url) => (
-          <div key={url} className={styles.post}>
-            <blockquote
-              className="instagram-media"
-              data-instgrm-permalink={url}
-              data-instgrm-version="14"
-              style={{
-                justifySelf: 'center',
-                margin: '0 auto',
-                maxWidth: '500px',
-                width: '100%',
-              }}
-            />
+        {[0, 1, 2].map((i) => (
+          <div key={i} className={styles.post}>
+            {showSkeleton ? (
+              <div className={`${styles.skeleton} ${fadingOut ? styles.skeletonFadeOut : ''}`} />
+            ) : (
+              <blockquote
+                className="instagram-media"
+                data-instgrm-permalink={posts[i]}
+                data-instgrm-version="14"
+                style={{
+                  justifySelf: 'center',
+                  margin: '0 auto',
+                  maxWidth: '500px',
+                  width: '100%',
+                }}
+              />
+            )}
           </div>
         ))}
       </div>
