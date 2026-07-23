@@ -21,7 +21,7 @@ cp .env.example .env
 
 Para acessar token e copiar: acesse `http://localhost:1337/admin` → **Settings** → **API Tokens** → **Read only** → **View Token**.
 
-## Rodando
+## Para rodar
 
 ```bash
 npm install
