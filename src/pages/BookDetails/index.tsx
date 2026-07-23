@@ -13,7 +13,8 @@ const slugToCover: Record<string, string> = Object.fromEntries(
   booksData.map((b) => [b.slug, b.cover_url]),
 );
 
-function getCoverUrl(slug: string): string {
+function getCoverUrl(slug: string, apiUrl?: string): string {
+  if (apiUrl) return apiUrl;
   const filename = slugToCover[slug];
   if (filename) return `/covers/${filename}`;
   return 'https://placehold.co/600x600';
@@ -49,7 +50,7 @@ export function BookDetails() {
     <main className="container">
       <article className={styles.details}>
         <section className={styles['cover-section']}>
-          <img src={getCoverUrl(book.slug)} alt={book.title} />
+          <img src={getCoverUrl(book.slug, book.coverUrl)} alt={book.title} />
           <Link className={styles.buy} to="#">
             <span className={styles.text}>Comprar</span>
             <span className={styles.icon} aria-hidden="true">
