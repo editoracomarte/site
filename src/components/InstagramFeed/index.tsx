@@ -27,7 +27,7 @@ export function InstagramFeed() {
 
   useEffect(() => {
     if (isLoading) return;
-    const fadeTimer = setTimeout(() => setFadingOut(true), 700);
+    const fadeTimer = setTimeout(() => setFadingOut(true), 800);
     return () => clearTimeout(fadeTimer);
   }, [isLoading]);
 
