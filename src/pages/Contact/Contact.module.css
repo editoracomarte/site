@@ -8,7 +8,8 @@
     text-align: center;
   }
 
-  p, address {
+  p,
+  address {
     font-style: normal;
     line-height: 1.75;
     margin-top: 1.5rem;
