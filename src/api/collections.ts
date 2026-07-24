@@ -18,7 +18,9 @@ export async function getCollections(): Promise<Collection[]> {
   qs.set('fields[1]', 'slug');
   qs.set('populate[books][fields][0]', 'slug');
 
-  const res = await apiGet<StrapiCollectionResponse<ApiCollection>>(`/collections?${qs.toString()}`);
+  const res = await apiGet<StrapiCollectionResponse<ApiCollection>>(
+    `/collections?${qs.toString()}`,
+  );
 
   return [...res.data]
     .sort((a, b) => (b.books?.length ?? 0) - (a.books?.length ?? 0))
