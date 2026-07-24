@@ -1,24 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
-import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useBookQuery } from '@/queries/books';
 import { Loading } from '@/components/Loading';
 import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { BookHeader } from '@/components/BookHeader';
 import { BookTechnicalInfo } from '@/components/BookTechnicalInfo';
 import { CartIcon } from '@/components/CartIcon';
-import booksData from '@/db/books.json';
+import { getCoverUrl } from '@/utils/covers';
 import styles from './BookDetails.module.css';
-
-const slugToCover: Record<string, string> = Object.fromEntries(
-  booksData.map((b) => [b.slug, b.cover_url]),
-);
-
-function getCoverUrl(slug: string, apiUrl?: string): string {
-  if (apiUrl) return apiUrl;
-  const filename = slugToCover[slug];
-  if (filename) return `/covers/${filename}`;
-  return 'https://placehold.co/600x600';
-}
 
 export function BookDetails() {
   const { slug } = useParams<{ slug: string }>();
@@ -59,23 +48,26 @@ export function BookDetails() {
           </Link>
         </section>
 
-        <BookHeader title={book.title} author={book.autoria} genres={book.genres} />
+        <BookHeader title={book.title} authors={book.authors} genres={book.genres} />
 
         {book.description.length > 0 && (
           <section className={styles['synopsis-section']}>
             <h3>Sinopse</h3>
-            <BlocksRenderer content={book.description as unknown as BlocksContent} />
+            <BlocksRenderer content={book.description} />
           </section>
         )}
 
-        <BookTechnicalInfo
-          isbn={book.isbn}
-          genres={book.genres}
-          pages={book.pages}
-          format={book.format}
-          publishingYear={book.publishingYear}
-          collection={book.collection}
-        />
+        <section className={styles.info}>
+          <BookTechnicalInfo
+            isbn={book.isbn}
+            genres={book.genres}
+            pages={book.pages}
+            format={book.format}
+            publishingYear={book.publishingYear}
+            collection={book.collection}
+          />
+          <div className={styles.sample}>Amostra do livro em breve</div>
+        </section>
 
         <section>
           <h3>Livros Relacionados</h3>

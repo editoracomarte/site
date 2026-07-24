@@ -1,10 +1,11 @@
+import { Link, useSearchParams } from 'react-router-dom';
 import { useBooksQuery } from '@/queries/books';
-import styles from './Catalog.module.css';
+import { getCoverUrl } from '@/utils/covers';
 import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { Loading } from '@/components/Loading';
-import type { Book } from '@/api/books';
-import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@/components/Pagination';
+import type { Book } from '@/api/books';
+import styles from './Catalog.module.css';
 
 export function Catalog() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,36 +49,43 @@ export function Catalog() {
   );
 }
 
-interface BooksProps {
-  books: Book[];
-}
-
-function Books({ books }: BooksProps) {
+function Books({ books }: { books: Book[] }) {
   return (
     <ul className={styles['books-list']}>
       {books.map((book) => (
         <li className={styles['books-list-item']} key={book.slug}>
-          <Book book={book} />
+          <BookCard book={book} />
         </li>
       ))}
     </ul>
   );
 }
 
-interface BookProps {
-  book: Book;
-}
-
-function Book({ book }: BookProps) {
+function BookCard({ book }: { book: Book }) {
   return (
     <article className={styles.book}>
       <Link to={`/catalogo/${book.slug}`} style={{ textDecoration: 'none' }}>
         <div className={styles['cover-wrapper']}>
-          <img src="/covers/A_Galinha_dos_Ovos_Verdes-600x600.png" className={styles.cover} />
+          <img
+            src={getCoverUrl(book.slug, book.coverUrl)}
+            alt={book.title}
+            className={styles.cover}
+          />
         </div>
         <h3 className={styles.title}>{book.title}</h3>
-        <h4 className={styles.authors}>{book.autoria}</h4>
       </Link>
+      {book.authors?.length ? (
+        <h4 className={styles.authors}>
+          {book.authors.map((author, i) => (
+            <span key={author.slug}>
+              {i > 0 && ', '}
+              <Link to={`/autores/${author.slug}`} className={styles['author-link']}>
+                {author.name}
+              </Link>
+            </span>
+          ))}
+        </h4>
+      ) : null}
     </article>
   );
 }

@@ -1,23 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useFeaturedBooksQuery } from '@/queries/books';
-import booksData from '@/db/books.json';
+import { getCoverUrl } from '@/utils/covers';
 import type { Book } from '@/api/books';
+import booksData from '@/db/books.json';
 import styles from './BookCatalog.module.css';
 
-const slugToCover: Record<string, string> = Object.fromEntries(
-  booksData.map((b) => [b.slug, b.cover_url]),
-);
-
-const fallbackBooks: Book[] = [...booksData]
-  .slice(0, 12)
-  .map((b) => ({ slug: b.slug, title: b.title, autoria: b.author }));
-
-function getCoverUrl(book: Book): string {
-  if (book.coverUrl) return book.coverUrl;
-  const filename = slugToCover[book.slug];
-  if (filename) return `/covers/${filename}`;
-  return 'https://placehold.co/600x600';
-}
+const fallbackBooks: Book[] = booksData.slice(0, 3).map((b) => ({
+  slug: b.slug,
+  title: b.title,
+}));
 
 export function BookCatalog() {
   const { data, isLoading, isError } = useFeaturedBooksQuery();
@@ -34,7 +25,7 @@ export function BookCatalog() {
             <article className={styles.card}>
               <div className={styles.cover} aria-label={book.title}>
                 <img
-                  src={getCoverUrl(book)}
+                  src={getCoverUrl(book.slug, book.coverUrl)}
                   alt={book.title}
                   className={styles.image}
                   loading="lazy"
