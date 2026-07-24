@@ -22,7 +22,7 @@ type ApiBook = {
 export type Book = {
   slug: string;
   title: string;
-  autoria: string;
+  authors?: { name: string; slug: string }[];
   coverUrl?: string;
 };
 
@@ -35,7 +35,7 @@ export type BookDetail = {
   format: string;
   pages: number | null;
   publishingYear: number;
-  autoria: string;
+  authors: { name: string; slug: string }[];
   collection: string;
   genres: string[];
   coverUrl?: string;
@@ -60,7 +60,7 @@ export async function getBook(slug: string): Promise<BookDetail> {
     format: raw.format ?? '',
     pages: raw.page_num ?? null,
     publishingYear: raw.publishing_year ?? 0,
-    autoria: raw.authors?.map((a) => a.name).join(', ') ?? '',
+    authors: raw.authors ?? [],
     collection: raw.collections?.[0]?.name ?? '',
     genres: raw.genres?.map((g) => g.name) ?? [],
     coverUrl: strapiUrl(raw.cover?.url),
@@ -74,7 +74,6 @@ export async function getFeaturedBooks(): Promise<BooksListResult> {
     data: res.data.map((book) => ({
       slug: book.slug,
       title: book.title,
-      autoria: '',
       coverUrl: strapiUrl(book.cover?.url),
     })),
   };
@@ -92,6 +91,7 @@ export async function getBooks(
   qs.set('fields[0]', 'title');
   qs.set('fields[1]', 'slug');
   qs.set('populate[authors][fields][0]', 'name');
+  qs.set('populate[authors][fields][1]', 'slug');
   qs.set('populate[cover][fields][0]', 'url');
 
   const res = await apiGet<StrapiCollectionResponse<ApiBook>>(`/books?${qs.toString()}`);
@@ -100,7 +100,7 @@ export async function getBooks(
     data: res.data.map((book) => ({
       slug: book.slug,
       title: book.title,
-      autoria: book.authors?.map((a) => a.name).join(', ') ?? '',
+      authors: book.authors,
       coverUrl: strapiUrl(book.cover?.url),
     })),
     pagination: res.meta?.pagination,
