@@ -6,19 +6,8 @@ import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { BookHeader } from '@/components/BookHeader';
 import { BookTechnicalInfo } from '@/components/BookTechnicalInfo';
 import { CartIcon } from '@/components/CartIcon';
-import booksData from '@/db/books.json';
+import { getCoverUrl } from '@/utils/covers';
 import styles from './BookDetails.module.css';
-
-const slugToCover: Record<string, string> = Object.fromEntries(
-  booksData.map((b) => [b.slug, b.cover_url]),
-);
-
-function getCoverUrl(slug: string, apiUrl?: string): string {
-  if (apiUrl) return apiUrl;
-  const filename = slugToCover[slug];
-  if (filename) return `/covers/${filename}`;
-  return 'https://placehold.co/600x600';
-}
 
 export function BookDetails() {
   const { slug } = useParams<{ slug: string }>();
