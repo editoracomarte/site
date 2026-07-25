@@ -1,9 +1,7 @@
 import type { BlocksContent } from '@strapi/blocks-react-renderer';
 
 export function blockText(block: BlocksContent[number]): string {
-  return 'children' in block
-    ? ((block.children[0] as { text?: string }).text ?? '')
-    : '';
+  return 'children' in block ? ((block.children[0] as { text?: string }).text ?? '') : '';
 }
 
 export function splitAtHeading(
