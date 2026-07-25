@@ -5,6 +5,7 @@ import { Loading } from '@/components/Loading';
 import type { Book } from '@/api/books';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@/components/Pagination';
+import { getCoverUrl } from '@/utils/covers';
 
 export function Catalog() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -73,7 +74,12 @@ function Book({ book }: BookProps) {
     <article className={styles.book}>
       <Link to={`/catalogo/${book.slug}`} style={{ textDecoration: 'none' }}>
         <div className={styles['cover-wrapper']}>
-          <img src="/covers/A_Galinha_dos_Ovos_Verdes-600x600.png" className={styles.cover} />
+          <img
+            src={getCoverUrl(book.slug, book.coverUrl)}
+            alt={book.title}
+            className={styles.cover}
+            loading="lazy"
+          />
         </div>
         <h3 className={styles.title}>{book.title}</h3>
         <h4 className={styles.authors}>{book.autoria}</h4>
