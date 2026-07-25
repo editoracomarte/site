@@ -25,6 +25,17 @@
   width: 100%;
 }
 
+.empty-state {
+  color: var(--dark-gray);
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.stale {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
 .cover-wrapper {
   background-color: var(--gray);
   width: 100%;
