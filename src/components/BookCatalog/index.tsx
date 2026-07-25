@@ -12,8 +12,9 @@ const fallbackBooks: Book[] = [...booksData]
   .slice(0, 12)
   .map((b) => ({ slug: b.slug, title: b.title, autoria: b.author }));
 
-function getCoverUrl(slug: string): string {
-  const filename = slugToCover[slug];
+function getCoverUrl(book: Book): string {
+  if (book.coverUrl) return book.coverUrl;
+  const filename = slugToCover[book.slug];
   if (filename) return `/covers/${filename}`;
   return 'https://placehold.co/600x600';
 }
@@ -33,7 +34,7 @@ export function BookCatalog() {
             <article className={styles.card}>
               <div className={styles.cover} aria-label={book.title}>
                 <img
-                  src={getCoverUrl(book.slug)}
+                  src={getCoverUrl(book)}
                   alt={book.title}
                   className={styles.image}
                   loading="lazy"

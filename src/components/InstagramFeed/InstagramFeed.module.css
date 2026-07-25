@@ -48,6 +48,7 @@
 .post {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .post:nth-child(n + 2) {
@@ -55,6 +56,44 @@
 
   @media (min-width: 1024px) {
     display: flex;
+  }
+}
+
+.skeleton {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--light-gray, #e8e8e8) 25%, var(--lighter-gray, #f2f2f2) 50%, var(--light-gray, #e8e8e8) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.skeletonFadeOut {
+  opacity: 0;
+}
+
+.post blockquote {
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 

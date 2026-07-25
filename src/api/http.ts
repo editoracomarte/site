@@ -15,6 +15,14 @@ const API_TOKEN = import.meta.env.VITE_API_TOKEN as string | undefined;
 
 if (!API_URL) throw new Error('Missing VITE_API_URL');
 
+const STRAPI_BASE = API_URL.replace(/\/api\/?$/, '');
+
+export function strapiUrl(path: string | null | undefined): string | undefined {
+  if (!path) return undefined;
+  if (path.startsWith('http')) return path;
+  return `${STRAPI_BASE}${path}`;
+}
+
 export async function apiGet<T>(path: string): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
     headers: {

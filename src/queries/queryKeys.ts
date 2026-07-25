@@ -1,4 +1,9 @@
 export const queryKeys = {
+  aboutUs: () => ['about-us'] as const,
+  publish: () => ['publish'] as const,
+  instagram: {
+    feed: () => ['instagram', 'feed'] as const,
+  },
   collections: {
     list: () => ['collections', 'list'] as const,
   },

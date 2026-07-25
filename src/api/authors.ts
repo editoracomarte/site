@@ -3,15 +3,21 @@ import type { StrapiCollectionResponse, StrapiMetaPagination } from '@/api/types
 import type { BlocksContent } from '@strapi/blocks-react-renderer';
 
 export type ApiAuthor = {
-  descricao: BlocksContent;
-  nome: string;
+  name: string;
   slug: string;
+  description: BlocksContent;
+  lattes?: string | null;
+  orcid?: string | null;
+  books?: { title: string; slug: string }[];
 };
 
 export type Author = {
-  description: BlocksContent;
   name: string;
   slug: string;
+  description: BlocksContent;
+  lattes?: string | null;
+  orcid?: string | null;
+  books?: { title: string; slug: string }[];
 };
 
 export type AuthorResult = {
@@ -32,25 +38,9 @@ export type GetAuthorsParams = {
   pageSize?: number;
 };
 
-function convertApiAuthor(author: ApiAuthor): Author {
-  return {
-    description: author.descricao,
-    slug: author.slug,
-    name: author.nome,
-  };
-}
-
 export async function getAuthor(params: GetAuthorParams): Promise<AuthorResult> {
-  const { slug } = params;
-
-  const qs = new URLSearchParams();
-  qs.set('filters[slug][$eq]', slug);
-
-  const res = await apiGet<StrapiCollectionResponse<ApiAuthor>>(`/autores?${qs.toString()}`);
-
-  return {
-    data: convertApiAuthor(res.data[0]),
-  };
+  const res = await apiGet<{ data: ApiAuthor }>(`/author/${params.slug}`);
+  return { data: res.data };
 }
 
 export async function getAuthors(params: GetAuthorsParams = {}): Promise<AuthorsListResult> {
@@ -60,14 +50,14 @@ export async function getAuthors(params: GetAuthorsParams = {}): Promise<Authors
   const qs = new URLSearchParams();
   qs.set('pagination[page]', String(page));
   qs.set('pagination[pageSize]', String(pageSize));
-  qs.set('fields[0]', 'nome');
+  qs.set('fields[0]', 'name');
   qs.set('fields[1]', 'slug');
-  qs.set('sort', 'nome:asc');
+  qs.set('sort', 'name:asc');
 
-  const res = await apiGet<StrapiCollectionResponse<ApiAuthor>>(`/autores?${qs.toString()}`);
+  const res = await apiGet<StrapiCollectionResponse<ApiAuthor>>(`/authors?${qs.toString()}`);
 
   return {
-    data: res.data.map(convertApiAuthor),
+    data: res.data,
     pagination: res.meta?.pagination,
   };
 }
