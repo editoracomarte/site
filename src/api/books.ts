@@ -86,6 +86,23 @@ export async function getFeaturedBooks(): Promise<BooksListResult> {
   };
 }
 
+export async function getRelatedBooks(slug: string, limit?: number): Promise<Book[]> {
+  const qs = new URLSearchParams();
+  if (limit) qs.set('limit', String(limit));
+  const query = qs.toString();
+
+  const res = await apiGet<{ data: ApiBook[] }>(
+    `/books/${slug}/related${query ? `?${query}` : ''}`,
+  );
+
+  return res.data.map((book) => ({
+    slug: book.slug,
+    title: book.title,
+    autoria: '',
+    coverUrl: strapiUrl(book.cover?.url),
+  }));
+}
+
 export async function getBooks(params: GetBooksParams = {}): Promise<BooksListResult> {
   const page = params.page ?? 1;
   const pageSize = params.pageSize ?? 24;

@@ -16,5 +16,6 @@ export const queryKeys = {
     list: (params: { page: number; pageSize: number; search: string }) =>
       ['books', 'list', params] as const,
     featured: () => ['books', 'featured'] as const,
+    related: (params: { slug: string; limit?: number }) => ['books', 'related', params] as const,
   },
 };
