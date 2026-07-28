@@ -22,7 +22,7 @@ type ApiBook = {
 export type Book = {
   slug: string;
   title: string;
-  autoria: string;
+  autoria?: string;
   coverUrl?: string;
 };
 
@@ -80,7 +80,6 @@ export async function getFeaturedBooks(): Promise<BooksListResult> {
     data: res.data.map((book) => ({
       slug: book.slug,
       title: book.title,
-      autoria: '',
       coverUrl: strapiUrl(book.cover?.url),
     })),
   };
@@ -98,7 +97,6 @@ export async function getRelatedBooks(slug: string, limit?: number): Promise<Boo
   return res.data.map((book) => ({
     slug: book.slug,
     title: book.title,
-    autoria: '',
     coverUrl: strapiUrl(book.cover?.url),
   }));
 }
