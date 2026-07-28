@@ -13,7 +13,8 @@ export const queryKeys = {
   },
   books: {
     get: (params: { slug: string }) => ['books', 'get', params] as const,
-    list: (params: { page: number; pageSize: number }) => ['books', 'list', params] as const,
+    list: (params: { page: number; pageSize: number; search: string }) =>
+      ['books', 'list', params] as const,
     featured: () => ['books', 'featured'] as const,
   },
 };

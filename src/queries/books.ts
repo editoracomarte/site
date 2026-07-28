@@ -18,13 +18,14 @@ export function useFeaturedBooksQuery() {
   });
 }
 
-export function useBooksQuery(params?: { page?: number; pageSize?: number }) {
+export function useBooksQuery(params?: { page?: number; pageSize?: number; search?: string }) {
   const page = params?.page ?? 1;
   const pageSize = params?.pageSize ?? 24;
+  const search = params?.search?.trim() ?? '';
 
   return useQuery({
-    queryKey: queryKeys.books.list({ page, pageSize }),
-    queryFn: () => getBooks({ page, pageSize }),
+    queryKey: queryKeys.books.list({ page, pageSize, search }),
+    queryFn: () => getBooks({ page, pageSize, search }),
     placeholderData: keepPreviousData,
     staleTime: 60_000,
   });
