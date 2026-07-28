@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useBookQuery } from '@/queries/books';
 import { Loading } from '@/components/Loading';
@@ -40,12 +40,20 @@ export function BookDetails() {
       <article className={styles.details}>
         <section className={styles['cover-section']}>
           <img src={getCoverUrl(book.slug, book.coverUrl)} alt={book.title} />
-          <Link className={styles.buy} to="#">
-            <span className={styles.text}>Comprar</span>
-            <span className={styles.icon} aria-hidden="true">
-              <CartIcon />
-            </span>
-          </Link>
+          {book.storeUrl && (
+            <a
+              className={styles.buy}
+              href={book.storeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Comprar ${book.title}`}
+            >
+              <span className={styles.text}>Comprar</span>
+              <span className={styles.icon} aria-hidden="true">
+                <CartIcon />
+              </span>
+            </a>
+          )}
         </section>
 
         <BookHeader title={book.title} authors={book.authors} genres={book.genres} />

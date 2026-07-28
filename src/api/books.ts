@@ -47,6 +47,12 @@ export type BooksListResult = {
   pagination?: StrapiMetaPagination;
 };
 
+export type GetBooksParams = {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+};
+
 export async function getBook(slug: string): Promise<BookDetail> {
   const res = await apiGet<{ data: ApiBook }>(`/book/${slug}`);
   const raw = res.data;
@@ -79,11 +85,10 @@ export async function getFeaturedBooks(): Promise<BooksListResult> {
   };
 }
 
-export async function getBooks(
-  params: { page?: number; pageSize?: number } = {},
-): Promise<BooksListResult> {
+export async function getBooks(params: GetBooksParams = {}): Promise<BooksListResult> {
   const page = params.page ?? 1;
   const pageSize = params.pageSize ?? 24;
+  const search = params.search?.trim() ?? '';
 
   const qs = new URLSearchParams();
   qs.set('pagination[page]', String(page));
@@ -93,6 +98,13 @@ export async function getBooks(
   qs.set('populate[authors][fields][0]', 'name');
   qs.set('populate[authors][fields][1]', 'slug');
   qs.set('populate[cover][fields][0]', 'url');
+
+  // Busca livre sobre título, nome de autor e nome de coleção.
+  if (search) {
+    qs.set('filters[$or][0][title][$containsi]', search);
+    qs.set('filters[$or][1][authors][name][$containsi]', search);
+    qs.set('filters[$or][2][collections][name][$containsi]', search);
+  }
 
   const res = await apiGet<StrapiCollectionResponse<ApiBook>>(`/books?${qs.toString()}`);
 

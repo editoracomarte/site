@@ -5,7 +5,7 @@ import type { Book } from '@/api/books';
 import booksData from '@/db/books.json';
 import styles from './BookCatalog.module.css';
 
-const fallbackBooks: Book[] = booksData.slice(0, 3).map((b) => ({
+const fallbackBooks: Book[] = booksData.slice(0, 12).map((b) => ({
   slug: b.slug,
   title: b.title,
 }));
