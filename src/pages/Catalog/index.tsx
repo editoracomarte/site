@@ -76,13 +76,6 @@ export function Catalog() {
         </h1>
 
         <div className={styles['search-row']}>
-          <SearchBar
-            term={busca}
-            onSearch={handleSearch}
-            label="Buscar livros por título, autor ou coleção"
-            placeholder="Busque por título, autor ou coleção"
-          />
-
           {collections && collections.length > 0 && (
             <FilterPill
               label="Coleção"
@@ -92,6 +85,13 @@ export function Catalog() {
               onChange={handleCollectionChange}
             />
           )}
+
+          <SearchBar
+            term={busca}
+            onSearch={handleSearch}
+            label="Buscar livros por título, autor ou coleção"
+            placeholder="Busque por título, autor ou coleção"
+          />
         </div>
 
         {showLoading && <Loading />}
