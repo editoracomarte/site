@@ -1,0 +1,74 @@
+.wrapper {
+  position: relative;
+}
+
+.pill {
+  align-items: center;
+  background-color: var(--white);
+  border: 2px solid var(--black);
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: var(--black);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  white-space: nowrap;
+}
+
+.pill[aria-expanded='true'] {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--royal-blue);
+  outline-offset: 2px;
+}
+
+.chevron {
+  font-size: 0.7rem;
+}
+
+.popover {
+  background-color: var(--white);
+  border: 2px solid var(--black);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  margin-top: 0.4rem;
+  min-width: 12rem;
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+}
+
+.popover li {
+  display: flex;
+}
+
+.option {
+  background: none;
+  border: none;
+  color: var(--black);
+  cursor: pointer;
+  flex: 1;
+  font: inherit;
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+}
+
+.option:hover {
+  background-color: var(--gray);
+}
+
+.option:focus-visible {
+  outline: 2px solid var(--royal-blue);
+  outline-offset: -2px;
+}
+
+.active {
+  font-weight: 700;
+}

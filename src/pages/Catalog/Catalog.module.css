@@ -16,53 +16,18 @@
   clip-path: polygon(0% 10%, 100% 0%, 98% 100%, 1% 95%);
 }
 
-.search-row {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.search-wrap {
   margin: 2rem auto 0;
   max-width: 32rem;
   width: 100%;
-
-  > form {
-    flex: 1 1 16rem;
-  }
 }
 
-.filters-toggle {
-  align-items: center;
-  background-color: var(--white);
-  border: 2px solid var(--black);
-  box-sizing: border-box;
-  color: var(--black);
-  cursor: pointer;
+.pill-row {
   display: flex;
-  font: inherit;
-  padding: 0.6rem 0.9rem;
-  white-space: nowrap;
-}
-
-.filters-toggle:hover {
-  background-color: var(--black);
-  color: var(--white);
-}
-
-.filters-toggle:focus-visible {
-  outline: 2px solid var(--royal-blue);
-  outline-offset: 2px;
-}
-
-.filters-panel {
-  background-color: var(--white);
-  border: 2px solid var(--black);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 0.75rem auto 0;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.85rem auto 0;
   max-width: 32rem;
-  padding: 1rem;
   width: 100%;
 }
 
