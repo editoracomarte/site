@@ -1,7 +1,13 @@
+import { useContactQuery } from '@/queries/contact';
+import { addressLine, addressLocality, phoneAriaLabel, phoneHref } from '@/utils/contact';
 import styles from './Footer.module.css';
 
 export function Footer() {
+  const { data } = useContactQuery();
+
   const year = new Date().getFullYear();
+  const copyright =
+    data?.copyright ?? `© ${year} Com-Arte Editora Laboratório. Todos os direitos reservados.`;
 
   return (
     <footer className={styles.footer}>
@@ -16,30 +22,32 @@ export function Footer() {
             alt="Departamento de Jornalismo e Editoração da ECA-USP"
           />
         </section>
-        <section className={styles.address}>
-          <span className="sr-only">Endereço:</span>
-          <address>
-            Departamento de Jornalismo e Editoração (CJE)
-            <br />
-            Av. Prof. Lúcio Martins Rodrigues, 443 — Prédio 2 — Sala 10
-            <br />
-            Cidade Universitária, CEP 05508-020 — São Paulo — SP — Brasil
-            <br />
-            <span>
-              tel.{' '}
-              <a href="tel:+551130914016" aria-label="DDD 11 3 0 9 1 4 0 1 6">
-                (11) 3091-4016
-              </a>
+        {data && (
+          <section className={styles.address}>
+            <span className="sr-only">Endereço:</span>
+            <address>
+              {data.organization}
               <br />
-            </span>
-            <span>
-              e-mail: <a href="mailto:editoracomarte@usp.br">editoracomarte@usp.br</a>
-            </span>
-          </address>
-        </section>
+              {addressLine(data.address)}
+              <br />
+              {addressLocality(data.address)}
+              <br />
+              <span>
+                tel.{' '}
+                <a href={phoneHref(data.phone)} aria-label={phoneAriaLabel(data.phone)}>
+                  {data.phone}
+                </a>
+                <br />
+              </span>
+              <span>
+                e-mail: <a href={`mailto:${data.email}`}>{data.email}</a>
+              </span>
+            </address>
+          </section>
+        )}
       </section>
       <section className={styles.copyright}>
-        <small>© {year} Com-Arte Editora Laboratório. Todos os direitos reservados.</small>
+        <small>{copyright}</small>
       </section>
     </footer>
   );
