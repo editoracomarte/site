@@ -18,7 +18,7 @@ export function CollectionFilter({
 }: CollectionFilterProps) {
   return (
     <div className={styles.filter}>
-      <label className="sr-only" htmlFor={id}>
+      <label className={styles.label} htmlFor={id}>
         {label}
       </label>
 

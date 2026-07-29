@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useBooksQuery } from '@/queries/books';
 import { useCollectionsQuery } from '@/queries/collections';
 import styles from './Catalog.module.css';
@@ -16,6 +17,8 @@ export function Catalog() {
   const tamanho = searchParams.get('tamanho');
   const busca = searchParams.get('busca') ?? '';
   const colecao = searchParams.get('colecao') ?? '';
+  // Começa aberto quando se chega com um filtro já aplicado (ex.: link compartilhado).
+  const [filtersOpen, setFiltersOpen] = useState(() => Boolean(colecao));
 
   const { data, isLoading, isError, isPlaceholderData } = useBooksQuery({
     page: Number(pagina) || 1,
@@ -25,6 +28,7 @@ export function Catalog() {
   });
   const { data: collections } = useCollectionsQuery();
   const collectionName = collections?.find((c) => c.slug === colecao)?.name ?? '';
+  const activeFilterCount = colecao ? 1 : 0;
 
   const books = data?.data ?? [];
   // `keepPreviousData` mantém os resultados do termo anterior na tela enquanto o novo
@@ -75,7 +79,7 @@ export function Catalog() {
           <span className={styles.paper}>Catálogo</span>
         </h1>
 
-        <div className={styles.filters}>
+        <div className={styles['search-row']}>
           <SearchBar
             term={busca}
             onSearch={handleSearch}
@@ -83,15 +87,34 @@ export function Catalog() {
             placeholder="Busque por título, autor ou coleção"
           />
 
-          {collections && collections.length > 0 && (
-            <CollectionFilter
-              collections={collections}
-              value={colecao}
-              onChange={handleCollectionChange}
-              label="Filtrar livros por coleção"
-            />
-          )}
+          <button
+            type="button"
+            className={styles['filters-toggle']}
+            aria-expanded={filtersOpen}
+            aria-controls="catalog-filters-panel"
+            onClick={() => setFiltersOpen((open) => !open)}
+          >
+            Filtros{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}
+          </button>
         </div>
+
+        {filtersOpen && (
+          <div
+            id="catalog-filters-panel"
+            className={styles['filters-panel']}
+            role="region"
+            aria-label="Filtros do catálogo"
+          >
+            {collections && collections.length > 0 && (
+              <CollectionFilter
+                collections={collections}
+                value={colecao}
+                onChange={handleCollectionChange}
+                label="Coleção"
+              />
+            )}
+          </div>
+        )}
 
         {showLoading && <Loading />}
         {isError && (

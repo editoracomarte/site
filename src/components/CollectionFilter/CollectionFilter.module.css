@@ -1,5 +1,13 @@
 .filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
   width: 100%;
+}
+
+.label {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
 }
 
 .select {
