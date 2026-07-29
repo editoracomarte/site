@@ -51,14 +51,6 @@ Todas as chamadas à API passam por `src/api/http.ts`, que injeta automaticament
 
 Os dados são buscados e cacheados com [TanStack Query](https://tanstack.com/query). As queries ficam em `src/queries/` e as funções de fetch em `src/api/`.
 
-### Fallbacks
-
-Caso o backend não esteja disponível (erro de rede, permissão não configurada ou dados ausentes), os seguintes componentes exibem dados locais de `src/db/books.json`:
-
-- `BookCatalog` — exibe os 12 primeiros livros do JSON local
-- `BookCollections` — exibe as 3 primeiras coleções extraídas do JSON local
-- `InstagramFeed` — exibe os 3 posts hardcoded no componente
-
 ## Estrutura do projeto
 
 ```
