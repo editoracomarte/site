@@ -16,19 +16,18 @@
   clip-path: polygon(0% 10%, 100% 0%, 98% 100%, 1% 95%);
 }
 
-.search-wrap {
-  margin: 2rem auto 0;
-  max-width: 32rem;
-  width: 100%;
-}
-
-.pill-row {
+.search-row {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin: 0.85rem auto 0;
-  max-width: 32rem;
+  margin: 2rem auto 0;
+  max-width: 40rem;
   width: 100%;
+
+  > form {
+    flex: 1 1 16rem;
+  }
 }
 
 .books-list {

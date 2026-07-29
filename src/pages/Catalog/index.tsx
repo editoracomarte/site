@@ -75,17 +75,15 @@ export function Catalog() {
           <span className={styles.paper}>Catálogo</span>
         </h1>
 
-        <div className={styles['search-wrap']}>
+        <div className={styles['search-row']}>
           <SearchBar
             term={busca}
             onSearch={handleSearch}
             label="Buscar livros por título, autor ou coleção"
             placeholder="Busque por título, autor ou coleção"
           />
-        </div>
 
-        {collections && collections.length > 0 && (
-          <div className={styles['pill-row']}>
+          {collections && collections.length > 0 && (
             <FilterPill
               label="Coleção"
               allLabel="Todas"
@@ -93,8 +91,8 @@ export function Catalog() {
               value={colecao}
               onChange={handleCollectionChange}
             />
-          </div>
-        )}
+          )}
+        </div>
 
         {showLoading && <Loading />}
         {isError && (
