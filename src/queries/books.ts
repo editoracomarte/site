@@ -27,14 +27,20 @@ export function useRelatedBooksQuery(params: { slug: string; limit?: number }) {
   });
 }
 
-export function useBooksQuery(params?: { page?: number; pageSize?: number; search?: string }) {
+export function useBooksQuery(params?: {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+  collectionSlug?: string;
+}) {
   const page = params?.page ?? 1;
   const pageSize = params?.pageSize ?? 24;
   const search = params?.search?.trim() ?? '';
+  const collectionSlug = params?.collectionSlug?.trim() ?? '';
 
   return useQuery({
-    queryKey: queryKeys.books.list({ page, pageSize, search }),
-    queryFn: () => getBooks({ page, pageSize, search }),
+    queryKey: queryKeys.books.list({ page, pageSize, search, collectionSlug }),
+    queryFn: () => getBooks({ page, pageSize, search, collectionSlug }),
     placeholderData: keepPreviousData,
     staleTime: 60_000,
   });
