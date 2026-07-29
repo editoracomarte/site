@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useContactQuery } from '@/queries/contact';
 import { addressLine, addressLocality, phoneAriaLabel, phoneHref } from '@/utils/contact';
@@ -7,6 +8,13 @@ export function Contact() {
   const { data, isLoading } = useContactQuery();
 
   const content = data?.content ?? [];
+  const address = data?.address;
+
+  const addressLines = [
+    data?.organization,
+    address ? addressLine(address) : null,
+    address ? addressLocality(address) : null,
+  ].filter(Boolean) as string[];
 
   return (
     <main className="container">
@@ -15,24 +23,28 @@ export function Contact() {
           <span className={styles.paper}>Contato</span>
         </h1>
         {!isLoading && content.length > 0 && <BlocksRenderer content={content} />}
-        {data && (
+        {data && (addressLines.length > 0 || data.phone || data.email) && (
           <address>
-            {data.organization}
-            <br />
-            {addressLine(data.address)}
-            <br />
-            {addressLocality(data.address)}
-            <br />
-            <span>
-              telefone:{' '}
-              <a href={phoneHref(data.phone)} aria-label={phoneAriaLabel(data.phone)}>
-                {data.phone}
-              </a>
-              <br />
-            </span>
-            <span>
-              e-mail: <a href={`mailto:${data.email}`}>{data.email}</a>
-            </span>
+            {addressLines.map((line, index) => (
+              <Fragment key={index}>
+                {line}
+                <br />
+              </Fragment>
+            ))}
+            {data.phone && (
+              <span>
+                telefone:{' '}
+                <a href={phoneHref(data.phone)} aria-label={phoneAriaLabel(data.phone)}>
+                  {data.phone}
+                </a>
+                <br />
+              </span>
+            )}
+            {data.email && (
+              <span>
+                e-mail: <a href={`mailto:${data.email}`}>{data.email}</a>
+              </span>
+            )}
           </address>
         )}
       </section>
