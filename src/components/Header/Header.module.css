@@ -53,9 +53,9 @@ nav {
   color: var(--white);
 }
 
-.link:active{
- background-color: var(--dark-gray);
- color: var(--gray);
+.link:active {
+  background-color: var(--dark-gray);
+  color: var(--gray);
 }
 
 @media (max-width: 640px) {
