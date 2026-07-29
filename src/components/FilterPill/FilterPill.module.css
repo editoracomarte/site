@@ -9,7 +9,7 @@
   box-sizing: border-box;
   color: var(--black);
   display: flex;
-  max-width: 15rem;
+  max-width: 18rem;
   min-width: 8rem;
 }
 
@@ -34,7 +34,7 @@
   flex: 1 1 auto;
   gap: 0.4rem;
   min-width: 0;
-  padding: 0.45rem 0.9rem;
+  padding: 0.6rem 0.9rem;
 }
 
 .toggle:focus-visible,
@@ -63,7 +63,7 @@
 .clear {
   border-left: 2px solid currentColor;
   flex-shrink: 0;
-  padding: 0.45rem 0.7rem;
+  padding: 0.6rem 0.7rem;
 }
 
 .popover {

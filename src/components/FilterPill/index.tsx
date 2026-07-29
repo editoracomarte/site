@@ -58,9 +58,7 @@ export function FilterPill({ label, allLabel, options, value, onChange }: Filter
           aria-controls={popoverId}
           onClick={() => setIsOpen((open) => !open)}
         >
-          <span className={styles.label}>
-            {label}: {selectedLabel}
-          </span>
+          <span className={styles.label}>{value ? selectedLabel : `${label}: ${allLabel}`}</span>
           {!value && (
             <span aria-hidden="true" className={styles.chevron}>
               ▾
