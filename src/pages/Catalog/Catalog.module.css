@@ -35,6 +35,7 @@
     align-items: stretch;
 
     > form {
+      flex: none;
       order: 1;
     }
 
