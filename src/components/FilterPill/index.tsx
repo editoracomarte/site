@@ -49,19 +49,36 @@ export function FilterPill({ label, allLabel, options, value, onChange }: Filter
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
-      <button
-        type="button"
-        className={styles.pill}
-        aria-expanded={isOpen}
-        aria-haspopup="listbox"
-        aria-controls={popoverId}
-        onClick={() => setIsOpen((open) => !open)}
-      >
-        {label}: {selectedLabel}
-        <span aria-hidden="true" className={styles.chevron}>
-          ▾
-        </span>
-      </button>
+      <div className={styles.pill} data-open={isOpen}>
+        <button
+          type="button"
+          className={styles.toggle}
+          aria-expanded={isOpen}
+          aria-haspopup="listbox"
+          aria-controls={popoverId}
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          <span className={styles.label}>
+            {label}: {selectedLabel}
+          </span>
+          {!value && (
+            <span aria-hidden="true" className={styles.chevron}>
+              ▾
+            </span>
+          )}
+        </button>
+
+        {value && (
+          <button
+            type="button"
+            className={styles.clear}
+            onClick={() => onChange('')}
+            aria-label={`Limpar filtro de ${label.toLowerCase()}`}
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        )}
+      </div>
 
       {isOpen && (
         <ul id={popoverId} className={styles.popover} role="listbox">
