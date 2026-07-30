@@ -7,6 +7,7 @@ import { BookHeader } from '@/components/BookHeader';
 import { BookTechnicalInfo } from '@/components/BookTechnicalInfo';
 import { RelatedBooks } from '@/components/RelatedBooks';
 import { CartIcon } from '@/components/CartIcon';
+import { PdfIcon } from '@/components/PdfIcon';
 import { getCoverUrl } from '@/utils/covers';
 import styles from './BookDetails.module.css';
 
@@ -83,7 +84,11 @@ export function BookDetails() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Ler amostra
+                <span className={styles['sample-icon']} aria-hidden="true">
+                  <PdfIcon />
+                </span>
+                <span className={styles['sample-label']}>Ler amostra</span>
+                <span className={styles['sample-hint']}>Abre um PDF em nova aba</span>
               </a>
             )}
           </div>

@@ -131,16 +131,36 @@
 }
 
 .sample-link {
+  align-items: center;
   color: var(--royal-blue);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.sample-icon {
+  display: inline-flex;
+}
+
+.sample-label {
   font-family: var(--heading);
   font-size: 1.1rem;
   font-weight: 700;
   text-decoration: underline;
   text-transform: uppercase;
+}
 
-  &:hover {
-    text-decoration: none;
-  }
+.sample-hint {
+  color: var(--dark-gray);
+  font-size: 0.8rem;
 }
 
 .related-books-placeholder {
