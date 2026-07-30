@@ -5,6 +5,12 @@
   gap: 0;
 }
 
+@media (max-width: 639px) {
+  .grid > :nth-child(5) {
+    display: none;
+  }
+}
+
 .card {
   min-width: 0;
 }
