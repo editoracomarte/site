@@ -18,6 +18,16 @@ export function useFeaturedBooksQuery() {
   });
 }
 
+export function useBooksBySlugQueries(slugs: string[]) {
+  return useQueries({
+    queries: slugs.map((slug) => ({
+      queryKey: queryKeys.books.get({ slug }),
+      queryFn: () => getBook(slug),
+      staleTime: 60_000,
+    })),
+  });
+}
+
 export function useRelatedBooksQuery(params: { slug: string; limit?: number }) {
   return useQuery({
     queryKey: queryKeys.books.related(params),
