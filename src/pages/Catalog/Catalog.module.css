@@ -16,6 +16,35 @@
   clip-path: polygon(0% 10%, 100% 0%, 98% 100%, 1% 95%);
 }
 
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 2rem auto 0;
+  max-width: 40rem;
+  width: 100%;
+
+  > form {
+    flex: 1 1 16rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-row {
+    flex-direction: column;
+    align-items: stretch;
+
+    > form {
+      flex: none;
+      order: 1;
+    }
+
+    > div {
+      order: 2;
+    }
+  }
+}
+
 .books-list {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));

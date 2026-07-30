@@ -1,8 +1,6 @@
 .search {
   display: flex;
   gap: 0.5rem;
-  margin: 2rem auto 0;
-  max-width: 32rem;
   width: 100%;
 }
 
