@@ -51,6 +51,7 @@ export type GetBooksParams = {
   page?: number;
   pageSize?: number;
   search?: string;
+  collectionSlug?: string;
 };
 
 export async function getBook(slug: string): Promise<BookDetail> {
@@ -85,10 +86,27 @@ export async function getFeaturedBooks(): Promise<BooksListResult> {
   };
 }
 
+export async function getRelatedBooks(slug: string, limit?: number): Promise<Book[]> {
+  const qs = new URLSearchParams();
+  if (limit) qs.set('limit', String(limit));
+  const query = qs.toString();
+
+  const res = await apiGet<{ data: ApiBook[] }>(
+    `/books/${slug}/related${query ? `?${query}` : ''}`,
+  );
+
+  return res.data.map((book) => ({
+    slug: book.slug,
+    title: book.title,
+    coverUrl: strapiUrl(book.cover?.url),
+  }));
+}
+
 export async function getBooks(params: GetBooksParams = {}): Promise<BooksListResult> {
   const page = params.page ?? 1;
   const pageSize = params.pageSize ?? 24;
   const search = params.search?.trim() ?? '';
+  const collectionSlug = params.collectionSlug?.trim() ?? '';
 
   const qs = new URLSearchParams();
   qs.set('pagination[page]', String(page));
@@ -104,6 +122,10 @@ export async function getBooks(params: GetBooksParams = {}): Promise<BooksListRe
     qs.set('filters[$or][0][title][$containsi]', search);
     qs.set('filters[$or][1][authors][name][$containsi]', search);
     qs.set('filters[$or][2][collections][name][$containsi]', search);
+  }
+
+  if (collectionSlug) {
+    qs.set('filters[collections][slug][$eq]', collectionSlug);
   }
 
   const res = await apiGet<StrapiCollectionResponse<ApiBook>>(`/books?${qs.toString()}`);

@@ -1,6 +1,7 @@
 export const queryKeys = {
   aboutUs: () => ['about-us'] as const,
   publish: () => ['publish'] as const,
+  contact: () => ['contact'] as const,
   instagram: {
     feed: () => ['instagram', 'feed'] as const,
   },
@@ -13,8 +14,9 @@ export const queryKeys = {
   },
   books: {
     get: (params: { slug: string }) => ['books', 'get', params] as const,
-    list: (params: { page: number; pageSize: number; search: string }) =>
+    list: (params: { page: number; pageSize: number; search: string; collectionSlug: string }) =>
       ['books', 'list', params] as const,
     featured: () => ['books', 'featured'] as const,
+    related: (params: { slug: string; limit?: number }) => ['books', 'related', params] as const,
   },
 };

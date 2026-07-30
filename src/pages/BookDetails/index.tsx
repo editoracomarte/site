@@ -5,6 +5,7 @@ import { Loading } from '@/components/Loading';
 import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { BookHeader } from '@/components/BookHeader';
 import { BookTechnicalInfo } from '@/components/BookTechnicalInfo';
+import { RelatedBooks } from '@/components/RelatedBooks';
 import { CartIcon } from '@/components/CartIcon';
 import { getCoverUrl } from '@/utils/covers';
 import styles from './BookDetails.module.css';
@@ -77,12 +78,7 @@ export function BookDetails() {
           <div className={styles.sample}>Amostra do livro em breve</div>
         </section>
 
-        <section>
-          <h3>Livros Relacionados</h3>
-          <div className={styles['related-books-placeholder']}>
-            <p>Espaço reservado para livros relacionados</p>
-          </div>
-        </section>
+        <RelatedBooks slug={book.slug} />
       </article>
     </main>
   );

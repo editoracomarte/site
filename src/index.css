@@ -78,6 +78,7 @@ p {
 }
 
 .container {
+  box-sizing: border-box;
   padding: 1.5rem 1rem;
   width: 100%;
   max-width: 1200px;
