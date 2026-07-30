@@ -10,22 +10,41 @@ export function Header() {
       </NavLink>
 
       <nav>
-        <NavLink to="/" end className={styles.link}>
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) => `${styles.link}${isActive ? ` ${styles.activeLink}` : ''}`}
+        >
           início
         </NavLink>
-        <NavLink to="/catalogo" className={styles.link}>
+        <NavLink
+          to="/catalogo"
+          className={({ isActive }) => `${styles.link}${isActive ? ` ${styles.activeLink}` : ''}`}
+        >
           catálogo
         </NavLink>
-        <NavLink to="/autores" className={styles.link}>
+        <NavLink
+          to="/autores"
+          className={({ isActive }) => `${styles.link}${isActive ? ` ${styles.activeLink}` : ''}`}
+        >
           autores
         </NavLink>
-        <NavLink to="/quem-somos" className={styles.link}>
+        <NavLink
+          to="/quem-somos"
+          className={({ isActive }) => `${styles.link}${isActive ? ` ${styles.activeLink}` : ''}`}
+        >
           quem somos
         </NavLink>
-        <NavLink to="/publique" className={styles.link}>
+        <NavLink
+          to="/publique"
+          className={({ isActive }) => `${styles.link}${isActive ? ` ${styles.activeLink}` : ''}`}
+        >
           publique
         </NavLink>
-        <NavLink to="/contato" className={styles.link}>
+        <NavLink
+          to="/contato"
+          className={({ isActive }) => `${styles.link}${isActive ? ` ${styles.activeLink}` : ''}`}
+        >
           contato
         </NavLink>
       </nav>

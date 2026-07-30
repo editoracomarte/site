@@ -17,8 +17,7 @@ export function useAuthorsQuery(params?: { page?: number; pageSize?: number }) {
 export function useAuthorQuery(params: { slug: string }) {
   return useQuery({
     queryKey: queryKeys.authors.get(params),
-    queryFn: () => getAuthor(params),
-    placeholderData: keepPreviousData,
+    queryFn: () => getAuthor(params.slug),
     staleTime: 60_000,
   });
 }

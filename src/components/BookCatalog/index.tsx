@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useFeaturedBooksQuery } from '@/queries/books';
-import booksData from '@/db/books.json';
-import type { Book } from '@/api/books';
 import { getCoverUrl } from '@/utils/covers';
+import type { Book } from '@/api/books';
+import booksData from '@/db/books.json';
 import styles from './BookCatalog.module.css';
 
-const fallbackBooks: Book[] = [...booksData]
-  .slice(0, 12)
-  .map((b) => ({ slug: b.slug, title: b.title, autoria: b.author }));
+const fallbackBooks: Book[] = booksData.slice(0, 12).map((b) => ({
+  slug: b.slug,
+  title: b.title,
+}));
 
 export function BookCatalog() {
   const { data, isLoading, isError } = useFeaturedBooksQuery();

@@ -1,4 +1,4 @@
-import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import { useQuery, useQueries, keepPreviousData } from '@tanstack/react-query';
 import { getBook, getBooks, getFeaturedBooks, getRelatedBooks } from '@/api/books';
 import { queryKeys } from './queryKeys';
 
@@ -15,6 +15,16 @@ export function useFeaturedBooksQuery() {
     queryKey: queryKeys.books.featured(),
     queryFn: getFeaturedBooks,
     staleTime: 60_000,
+  });
+}
+
+export function useBooksBySlugQueries(slugs: string[]) {
+  return useQueries({
+    queries: slugs.map((slug) => ({
+      queryKey: queryKeys.books.get({ slug }),
+      queryFn: () => getBook(slug),
+      staleTime: 60_000,
+    })),
   });
 }
 

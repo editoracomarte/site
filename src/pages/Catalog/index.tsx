@@ -1,12 +1,12 @@
+import { Link, useSearchParams } from 'react-router-dom';
 import { useBooksQuery } from '@/queries/books';
 import { useCollectionsQuery } from '@/queries/collections';
-import styles from './Catalog.module.css';
 import { DefaultErrorMessage } from '@/components/DefaultErrorMessage';
 import { Loading } from '@/components/Loading';
-import type { Book } from '@/api/books';
-import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@/components/Pagination';
 import { SearchBar } from '@/components/SearchBar';
+import type { Book } from '@/api/books';
+import styles from './Catalog.module.css';
 import { FilterPill } from '@/components/FilterPill';
 import { getCoverUrl } from '@/utils/covers';
 
@@ -121,7 +121,7 @@ function Books({ books, isStale }: BooksProps) {
     <ul aria-busy={isStale} className={`${styles['books-list']} ${isStale ? styles.stale : ''}`}>
       {books.map((book) => (
         <li className={styles['books-list-item']} key={book.slug}>
-          <Book book={book} />
+          <BookCard book={book} />
         </li>
       ))}
     </ul>
@@ -159,11 +159,11 @@ function getEmptyStateMessage(term: string, collectionName?: string) {
   return 'Nenhum livro disponível no momento.';
 }
 
-interface BookProps {
+interface BookCardProps {
   book: Book;
 }
 
-function Book({ book }: BookProps) {
+function BookCard({ book }: BookCardProps) {
   return (
     <article className={styles.book}>
       <Link to={`/catalogo/${book.slug}`} style={{ textDecoration: 'none' }}>
@@ -176,8 +176,19 @@ function Book({ book }: BookProps) {
           />
         </div>
         <h3 className={styles.title}>{book.title}</h3>
-        <h4 className={styles.authors}>{book.autoria}</h4>
       </Link>
+      {book.authors?.length ? (
+        <h4 className={styles.authors}>
+          {book.authors.map((author, i) => (
+            <span key={author.slug}>
+              {i > 0 && ', '}
+              <Link to={`/autores/${author.slug}`} className={styles['author-link']}>
+                {author.name}
+              </Link>
+            </span>
+          ))}
+        </h4>
+      ) : null}
     </article>
   );
 }

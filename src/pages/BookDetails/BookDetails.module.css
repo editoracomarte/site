@@ -95,3 +95,45 @@
     margin-bottom: 0;
   }
 }
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.info > :first-child {
+  @media (min-width: 768px) {
+    flex: 2;
+  }
+}
+
+.sample {
+  background-color: var(--gray);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  min-height: 200px;
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+
+  @media (min-width: 768px) {
+    flex: 1;
+  }
+}
+
+.related-books-placeholder {
+  padding: 48px 24px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+  color: #999;
+}
