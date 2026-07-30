@@ -130,6 +130,19 @@
   }
 }
 
+.sample-link {
+  color: var(--royal-blue);
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .related-books-placeholder {
   padding: 48px 24px;
   background-color: #f9f9f9;

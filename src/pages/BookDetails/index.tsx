@@ -75,7 +75,18 @@ export function BookDetails() {
             publishingYear={book.publishingYear}
             collection={book.collection}
           />
-          <div className={styles.sample}>Amostra do livro em breve</div>
+          <div className={styles.sample}>
+            {book.sampleUrl && (
+              <a
+                className={styles['sample-link']}
+                href={book.sampleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ler amostra
+              </a>
+            )}
+          </div>
         </section>
 
         <RelatedBooks slug={book.slug} />
