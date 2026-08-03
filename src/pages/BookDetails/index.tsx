@@ -76,8 +76,8 @@ export function BookDetails() {
             publishingYear={book.publishingYear}
             collection={book.collection}
           />
-          <div className={styles.sample}>
-            {book.sampleUrl && (
+          {book.sampleUrl && (
+            <div className={styles.sample}>
               <a
                 className={styles['sample-link']}
                 href={book.sampleUrl}
@@ -90,8 +90,8 @@ export function BookDetails() {
                 <span className={styles['sample-label']}>Ler amostra</span>
                 <span className={styles['sample-hint']}>Abre um PDF em nova aba</span>
               </a>
-            )}
-          </div>
+            </div>
+          )}
         </section>
 
         <RelatedBooks slug={book.slug} />
