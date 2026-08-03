@@ -16,12 +16,14 @@
 
 .collection {
   align-items: center;
+  color: inherit;
   cursor: pointer;
   justify-content: flex-end;
   display: flex;
   height: 100px;
   padding: 1rem 1.5rem;
   position: relative;
+  text-decoration: none;
   transition: clip-path 300ms;
 
   clip-path: polygon(var(--fold-start-x) 0, 100% 0, 100% 100%, 0 100%, 0 var(--fold-start-y));
