@@ -40,6 +40,7 @@ export type BookDetail = {
   genres: string[];
   coverUrl?: string;
   storeUrl?: string;
+  sampleUrl?: string;
 };
 
 export type BooksListResult = {
@@ -72,6 +73,7 @@ export async function getBook(slug: string): Promise<BookDetail> {
     genres: raw.genres?.map((g) => g.name) ?? [],
     coverUrl: strapiUrl(raw.cover?.url),
     storeUrl: raw.store_url ?? undefined,
+    sampleUrl: strapiUrl(raw.sample?.url),
   };
 }
 
